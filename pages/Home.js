@@ -1,5 +1,7 @@
 import React from "react";
 
+import Link from "next/link";
+
 export default function Home() {
   return (
     <>
@@ -55,16 +57,22 @@ export default function Home() {
             src="fullFox.png"
           />
         </div>
-        <div className="flex flex-col  w-72 h-40 rounded-xl bg-violet-200 ml-96">
-          <h1 className="font-lalezar text-purple-700 text-center text-3xl ">
+        <div className="flex flex-col  items-center w-96 h-48 rounded-3xl bg-violet-200 ml-96">
+          <h1 className="font-lalezar text-purple-700 text-center m-3 text-3xl ">
             Fragmentify
           </h1>
-          <h2 className="font-lalezar   text-center text-xl ">
+          <h2 className="font-lalezar w-72 text-center text-xl ">
             Here you can split your NFTs into several pieces and sell them
             <br /> or buy someone else's NFTs at low prices on our unique
             marketplace
           </h2>
         </div>
+        <Link
+          className="rounded-3xl w-40 h-10 text-center flex items-center justify-center hover:bg-slate-700 active:translate-y-1 bg-black text-white"
+          href={"/Index"}
+        >
+          START
+        </Link>
       </div>
     </>
   );
