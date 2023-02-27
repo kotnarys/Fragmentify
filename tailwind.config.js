@@ -33,52 +33,17 @@ module.exports = {
       },
       animation: {
         pulsets: "pulset .6s",
-        blob1: "blob1 7s infinite",
-        blob2: "blob2 7s infinite",
-        blob3: "blob3 7s infinite",
+        up: "up 5s infinite",
+        down: "down 5s infinite",
       },
       keyframes: {
-        blob1: {
-          "0%": {
-            transform: "translate(0px, 0px)  scale(1)",
-          },
-          "33%": {
-            transform: "translate(127px, -230px) scale(1.1) ",
-          },
-          "66%": {
-            transform: "translate(255px, 0px) scale(0.9) ",
-          },
-          "100%": {
-            transform: "tranlate(0px, 00px) scale(1)",
-          },
+        up: {
+          "0%": { transform: "translate(0px, 0px) " },
+          "100%": { transform: "translate(500px,-500px)", opacity: 0 },
         },
-        blob2: {
-          "0%": {
-            transform: "translate(0px, 0px)  scale(1)",
-          },
-          "33%": {
-            transform: "translate(127px, 230px)   scale(1.1)",
-          },
-          "66%": {
-            transform: "translate(-127px, 230px)  scale(0.9)",
-          },
-          "100%": {
-            transform: "tranlate(0px, 0px)  scale(1)",
-          },
-        },
-        blob3: {
-          "0%": {
-            transform: "translate(0px, 0px ) scale(1) ",
-          },
-          "33%": {
-            transform: "translate(-255px, 0px ) scale(1.1) ",
-          },
-          "66%": {
-            transform: "translate(-127px, -230px ) scale(0.9)",
-          },
-          "100%": {
-            transform: "tranlate(0px, 0px) scale(1)",
-          },
+        down: {
+          "0%": { transform: "translate(0px, 0px) " },
+          "100%": { transform: "translate(-500px, 500px)", opacity: 0 },
         },
         pulset: {
           "0%": { opacity: "0" },
