@@ -1,0 +1,6 @@
+.startBtn {
+  @apply rounded-full bg-gradient-to-r from-start-blue  to-start-cyan h-16 w-72 text-color-text font-lalezar stroke-black text-4xl hover:opacity-75 transition-all active:translate-y-1;
+  @media screen and (width<401px) {
+    @apply h-12 w-52;
+  }
+}
