@@ -27,7 +27,7 @@ function PurchaseButton({ price, myVaultid }) {
         <input
           value={count}
           placeholder="Enter count"
-          className=" w-24 h-8 mr-5 text-center rounded-full font-lalezar"
+          className=" w-24 h-8 mr-5 text-center font-lalezar"
           onChange={(e) => {
             setCount(e.target.value);
           }}

@@ -88,7 +88,7 @@ function Marketplace({ address, NFTsOnMarket }) {
 
                           <button
                             id="claimButton"
-                            className="rounded-full w-56 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-teal-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-150  m-2"
+                            className="rounded-sm w-56 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-300 duration-350  m-2"
                             onClick={(e) => {
                               if (e.target.id == "claimButton") {
                                 myVaults(NFT.id.tokenId, NFT.contract.address);
@@ -104,7 +104,7 @@ function Marketplace({ address, NFTsOnMarket }) {
                 })
               ) : (
                 <div className="text-white m-32 3xl font-lalezar flex justify-center">
-                  Connect Wallet!
+                  Connect Wallet
                 </div>
               )}
             </section>
