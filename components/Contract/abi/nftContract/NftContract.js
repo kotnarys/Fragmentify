@@ -1,6 +1,6 @@
 import { Contract, InfuraProvider } from "ethers";
 
-import contractAbi from "./abi/nftabi.json";
+import contractAbi from "./nftabi.json";
 
 const defaultProvider = new InfuraProvider("goerli");
 

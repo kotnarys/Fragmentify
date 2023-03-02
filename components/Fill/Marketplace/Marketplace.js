@@ -9,7 +9,7 @@ import {
 } from 'ethers';
 import uuid from 'react-uuid';
 
-import split6 from '../../Contract/SplitContract';
+import split7 from '../../Contract/abi/splitContract/SplitContract';
 import NftCard from '../../NFT/NftCard.jsx';
 import handleClaimButtom from './ClaimButton';
 import PurchaseButton from './PurchaseButton.js';
@@ -22,7 +22,7 @@ function Marketplace({ address, NFTsOnMarket }) {
   async function myVaults(id, contract) {
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const splitb = split6.connect(signer);
+    const splitb = split7.connect(signer);
     {
       const vaultlength = Number(await splitb.vaultId());
       for (let i = 1; i < vaultlength; i++) {
@@ -85,10 +85,9 @@ function Marketplace({ address, NFTsOnMarket }) {
                               count={count}
                             />
                           </div>
-
                           <button
                             id="claimButton"
-                            className="rounded-sm w-56 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-300 duration-350  m-2"
+                            className="claimbtn w-52 mt-2"
                             onClick={(e) => {
                               if (e.target.id == "claimButton") {
                                 myVaults(NFT.id.tokenId, NFT.contract.address);
@@ -103,7 +102,7 @@ function Marketplace({ address, NFTsOnMarket }) {
                   }
                 })
               ) : (
-                <div className="text-white m-32 3xl font-lalezar flex justify-center">
+                <div className="connectwalletbtn">
                   Connect Wallet
                 </div>
               )}
