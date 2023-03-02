@@ -41,13 +41,13 @@ module.exports = {
       keyframes: {
         up: {
           "0%": { transform: "translate(0px, 0px) ", opacity:0.3 },
-          "10%": { transform: "translate(0px, 0px) ",opacity:1 },
+          "19%": { transform: "translate(0px, 0px) ",opacity:1 },
           "50%": { transform: "translate(700px,-700px)", opacity: 0.1 },
           "95%": { transform: "translate(700px, -700px)", opacity: 0.1 },
         },
         down: {
           "0%": { transform: "translate(0px, 0px) ", opacity:0.3 },
-          "10%": { transform: "translate(0px, 0px) " ,opacity:1 },
+          "19%": { transform: "translate(0px, 0px) " ,opacity:1 },
           "50%": { transform: "translate(-700px, 700px)", opacity: 0.1 },
           "95%": { transform: "translate(-700px, 700px)", opacity: 0.1 },     
         },
@@ -55,8 +55,9 @@ module.exports = {
         left20: {
           "0%": {  transform: "translate(0px, -40px)", opacity: 0 },
           "30%": {  transform: "translate(0px, -40px)", opacity: 0 },
-          "52%": {  transform: "translate(0px, 0px)", opacity: 1 },    
-          "100%": {  transform: "translate(0px, -40px)", opacity: 0 },
+          "52%": {  transform: "translate(0px, 0px)", opacity: 1 },  
+          "65%": {  transform: "translate(0px, 0px)", opacity: 1 },   
+          "100%": {  transform: "translate(0px, 0px)", opacity: 0 },
         },
 
      

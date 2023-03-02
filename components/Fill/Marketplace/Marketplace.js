@@ -61,7 +61,7 @@ function Marketplace({ address, NFTsOnMarket }) {
                     ) {
                       return (
                         <div
-                          className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center "
+                          className="transition ease-in-out delay-150 hover:-translate-y-1 hover: duration-150 flex flex-col items-center "
                           key={uuid()}
                         >
                           <NftCard
@@ -88,7 +88,7 @@ function Marketplace({ address, NFTsOnMarket }) {
 
                           <button
                             id="claimButton"
-                            className="rounded-sm w-56 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-300 duration-350  m-2"
+                            className="rounded-sm w-56 h-8 text-white font-lalezar  bg-black transition ease-in-out delay-150 hover:scale-110 hover:bg-slate-900 duration-350  m-2"
                             onClick={(e) => {
                               if (e.target.id == "claimButton") {
                                 myVaults(NFT.id.tokenId, NFT.contract.address);
