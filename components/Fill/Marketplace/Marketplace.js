@@ -14,7 +14,7 @@ import NftCard from '../../NFT/NftCard.jsx';
 import handleClaimButtom from './ClaimButton';
 import PurchaseButton from './PurchaseButton.js';
 
-function Marketplace({ address, NFTsOnMarket }) {
+function Marketplace({ NFTsOnMarket }) {
   const [myVaultid, setMyVaultId] = useState();
   const [myVault, setMyVault] = useState([]);
   const [count, setCount] = useState();
@@ -44,7 +44,7 @@ function Marketplace({ address, NFTsOnMarket }) {
 
   useEffect(() => {
     myVaults();
-  }, [address]);
+  }, []);
 
   return (
     <>
@@ -87,7 +87,7 @@ function Marketplace({ address, NFTsOnMarket }) {
                           </div>
                           <button
                             id="claimButton"
-                            className="rounded-sm w-56 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-300 duration-350  m-2"
+                            className="rounded-xl w-56 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-green-700 transition ease-in-out delay-150  hover:bg-green-400 duration-350  m-2"
                             onClick={(e) => {
                               if (e.target.id == "claimButton") {
                                 myVaults(NFT.id.tokenId, NFT.contract.address);
@@ -102,7 +102,7 @@ function Marketplace({ address, NFTsOnMarket }) {
                   }
                 })
               ) : (
-                <div className="connectwalletbtn">Connect Wallet</div>
+                <div> {null} </div>
               )}
             </section>
           </div>

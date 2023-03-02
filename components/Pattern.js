@@ -1,6 +1,5 @@
 import React, {
   Fragment,
-  useEffect,
   useState,
 } from 'react';
 
@@ -19,8 +18,8 @@ export default function Pattern() {
   const [address, setAddress] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [NFTs, setNFTs] = useState("");
-  const [contractAddress, setContractAddress] = useState("");
   const [NFTsOnMarket, setNFTsOnMarket] = useState("");
+  const [contractAddress, setContractAddress] = useState("");
 
   const handleConnectWallet = async () => {
     try {
@@ -34,16 +33,10 @@ export default function Pattern() {
         contractAddress,
         setNFTsOnMarket
       );
-
-      return address[0];
     } catch (error) {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    handleConnectWallet();
-  }, []);
 
   return (
     <>
@@ -89,7 +82,7 @@ export default function Pattern() {
             <div className="flex items-center space-x-3">
               <MintButton address={address} />
               {address ? (
-                <p className="flex justify-center items-center bg-blue-600 rounded-md font-lalezar w-36 h-7 hover:bg-blue-500 transition duration-500 ">{`${address.slice(
+                <p className="flex justify-center items-center bg-white rounded-md font-lalezar w-36 h-7 ">{`${address.slice(
                   0,
                   4
                 )}...${address.slice(address.length - 4)}`}</p>
@@ -113,7 +106,7 @@ export default function Pattern() {
                   setNFTonMarket={setNFTonMarket}
                 />
               ) : page === "resale" ? (
-                <Resale 
+                <Resale
                   address={address}
                   NFTsOnMarket={NFTsOnMarket}
                   setIsVisible={setShowModal}

@@ -31,42 +31,41 @@ img {
 }
 
 .greenbtn {
-  @apply rounded-full w-36 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-grens mb-5 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-400 duration-150;
+  @apply rounded-full w-36 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-grens mb-5 transition ease-in-out delay-150  hover:bg-green-400 duration-150;
 }
 
 .redbtn {
-  @apply rounded-full w-36 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-reds transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-400 duration-150;
+  @apply rounded-full w-36 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-reds transition ease-in-out delay-150  hover:bg-red-400 duration-150;
 }
 
 .whitebtn {
-  @apply rounded-full w-28 h-8 font-lalezar hover:opacity-80 active:translate-y-0.5 bg-whites text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-slate-400 duration-150;
+  @apply rounded-full w-28 h-8 font-lalezar hover:opacity-80 active:translate-y-0.5 bg-whites text-black transition ease-in-out delay-150  hover:bg-slate-400 duration-150;
 }
 
 .violetbtn {
-  @apply rounded-full w-24 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-violets transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-150;
+  @apply rounded-xl w-24 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-red-600 transition ease-in-out delay-150  hover:bg-red-400 duration-150;
 }
 
 .mainbtn {
-  @apply flex items-center justify-center rounded-md font-lalezar bg-slate-400  active:translate-y-1  text-zinc-600 hover:text-gray-300 hover:bg-slate-500 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300
+  @apply flex items-center justify-center rounded-md font-lalezar bg-slate-400  active:translate-y-1  text-zinc-600 hover:text-gray-300 hover:bg-slate-500 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300;
 }
 
 .buybtn {
-  @apply flex justify-center rounded-md font-lalezar bg-green-600  active:translate-y-1  text-slate-100  hover:bg-green-500 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300
+  @apply flex justify-center rounded-md font-lalezar bg-green-600  active:translate-y-1  text-slate-100  hover:bg-green-500 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300;
 }
 
 .addtomarketbtn {
-  @apply flex justify-center rounded-md font-lalezar bg-yellow-500  active:translate-y-1  text-slate-100  hover:bg-yellow-400 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300
+  @apply flex justify-center rounded-md font-lalezar bg-yellow-500  active:translate-y-1  text-slate-100  hover:bg-yellow-400 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300;
 }
 
 .pricebtn {
-  @apply flex items-center justify-center rounded-md font-lalezar bg-red-600  active:translate-y-1  text-gray-300 hover:bg-red-700 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-500
+  @apply flex items-center justify-center rounded-md font-lalezar bg-red-600  active:translate-y-1  text-gray-300 hover:bg-red-700 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-500;
 }
 
 .connectwalletbtn {
-  @apply flex items-center justify-center rounded-md font-lalezar bg-red-500  active:translate-y-1  text-gray-300 hover:bg-rose-600 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300
+  @apply flex items-center justify-center rounded-md font-lalezar bg-red-500  active:translate-y-1  text-gray-300 hover:bg-rose-600 hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300;
 }
 
 .claimbtn {
-  @apply flex items-center justify-center rounded-md font-lalezar bg-violet-700  active:translate-y-1  text-gray-300 hover:bg-violet-600  hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300
+  @apply flex items-center justify-center rounded-md font-lalezar bg-violet-700  active:translate-y-1  text-gray-300 hover:bg-violet-600  hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300;
 }
-

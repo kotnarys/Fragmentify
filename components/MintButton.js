@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { BrowserProvider } from "ethers";
+import { BrowserProvider } from 'ethers';
 
-import NFT8 from "./Contract/abi/nftContract/NftContract.js";
+import NFT8 from './Contract/abi/nftContract/NftContract.js';
 
 function MintButton({ address }) {
   async function handleMintClick() {
@@ -23,10 +23,10 @@ function MintButton({ address }) {
   return (
     <>
       <button
-        className="bg-blue-600 rounded-md font-lalezar h-7  hover:bg-blue-500 transition duration-500 w-20"
+        className="bg-white rounded-md font-lalezar h-7 transition duration-500 w-20"
         onClick={handleMintClick}
       >
-        Mint
+        MINT
       </button>
     </>
   );

@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import { BrowserProvider } from "ethers";
-import uuid from "react-uuid";
+import { BrowserProvider } from 'ethers';
+import uuid from 'react-uuid';
 
-import split7 from "../../Contract/abi/splitContract/SplitContract";
-import NftCard from "../../NFT/NftCard.jsx";
-import handleJoinClick from "./JoinButton";
-import BalanceOf from "./BalanceOf.js";
-
+import split7 from '../../Contract/abi/splitContract/SplitContract';
+import NftCard from '../../NFT/NftCard.jsx';
+import BalanceOf from './BalanceOf';
+import handleJoinClick from './JoinButton';
 
 function Profile({
   address,
@@ -23,7 +25,12 @@ function Profile({
   const [myVaultid, setMyVaultId] = useState();
   const [myVault, setMyVault] = useState([]);
   const [allVault, setAllVault] = useState([]);
-  const [tokenContract, setTokenContract] = useState();
+
+  function myBalanceOf(tokenContract) {
+    BalanceOf(tokenContract, address).then(function (result) {
+      console.log(result);
+    });
+  }
 
   async function myVaults(id, contract) {
     const provider = new BrowserProvider(window.ethereum);
@@ -110,46 +117,46 @@ function Profile({
                       allVault[i][0].toLowerCase() == NFT.contract.address &&
                       allVault[i][3] == BigInt(NFT.id.tokenId)
                     ) {
-                        return (
-                          <div
-                            className=" transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center "
-                            key={uuid()}
-                          >
-                            <NftCard
-                              image={NFT.media[0].gateway}
-                              title={NFT.title}
-                              address={NFT.contract.address}
-                              count={
-                                <>
-                                   {Number(BalanceOf(allVault[i][7], address))}/
-                                  {Number(allVault[i][5])}
-                                </>
-                              }
-                            ></NftCard>
-                            {allVault[i][4] > 0 ? (
-                              <></>
-                            ) : (
-                              <button
-                                id="joinButton"
-                                className=" greenbtn m-2"
-                                onClick={(e) => {
-                                  if (e.target.id == "joinButton") {
-                                    myVaults(
-                                      NFT.id.tokenId,
-                                      NFT.contract.address
-                                    );
-                                  }
-                                }}
-                              >
-                                GET BACK
-                              </button>
-                            )}
-                          </div>
-                        );
-                      }
+                      return (
+                        <div
+                          className=" transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center "
+                          key={uuid()}
+                        >
+                          <NftCard
+                            image={NFT.media[0].gateway}
+                            title={NFT.title}
+                            address={NFT.contract.address}
+                            count={
+                              <>
+                                {myBalanceOf(allVault[i][7])}/
+                                {Number(allVault[i][5])}
+                              </>
+                            }
+                          ></NftCard>
+
+                          {allVault[i][4] > 0 ? (
+                            <></>
+                          ) : (
+                            <button
+                              id="joinButton"
+                              className=" greenbtn m-2"
+                              onClick={(e) => {
+                                if (e.target.id == "joinButton") {
+                                  myVaults(
+                                    NFT.id.tokenId,
+                                    NFT.contract.address
+                                  );
+                                }
+                              }}
+                            >
+                              GET BACK
+                            </button>
+                          )}
+                        </div>
+                      );
                     }
                   }
-                )
+                })
               ) : (
                 <div className="text-white m-32 3xl font-lalezar flex justify-center">
                   Connect Wallet!
