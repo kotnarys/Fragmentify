@@ -21,8 +21,9 @@ const fetchNFTs = async (owner, contractAddress, setNFTs, retryAttempt) => {
     } catch (e) {
       fetchNFTs(endpoint, owner, contractAddress, setNFTs, retryAttempt + 1);
     }
-
-    setNFTs(data.ownedNfts);
+    if(data) {
+      setNFTs(data.ownedNfts);
+    }
     return data;
   }
 };

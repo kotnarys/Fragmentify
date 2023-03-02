@@ -2,9 +2,6 @@ const NftCard = ({
   image,
   id,
   title,
-  address,
-  description,
-  attributes,
   count,
   price,
 }) => {
@@ -21,7 +18,6 @@ const NftCard = ({
           "NO IMAGE"
         )}
       </div>
-
       <div className="p-3">
         <div>
           <div className="flex-grow">
