@@ -2,8 +2,8 @@ import React from "react";
 
 import { BrowserProvider, Contract, InfuraProvider, parseEther } from "ethers";
 
-import contractAbi from "../../Contract/abi/nftabi.json";
-import split6 from "../../Contract/SplitContract";
+import contractAbi from "../../Contract/abi/nftContract/nftabi.json";
+import split7 from "../../Contract/abi/splitContract/SplitContract";
 
 function SplitButton({
   setLoader,
@@ -25,13 +25,13 @@ function SplitButton({
   async function handleSplitClick() {
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const splitb = split6.connect(signer);
+    const splitb = split7.connect(signer);
     const nft = NFT4.connect(signer);
 
     try {
       setLoader(true);
       const aprove = await nft.approve(
-        "0x1970C4F71e18330836063645a41Fbfa1e3a690ac",
+        "0xe9B8bc5179B9e95C6fdd91DCEDC1C19ee1Af0Dad",
         BigInt(idNFT)
       );
       await aprove.wait();
@@ -46,16 +46,16 @@ function SplitButton({
         BigInt(period)
       );
       await spliting.wait();
-      setLoader(false);
       setIsVisible(false);
     } catch (error) {
-      setLoader(false);
       console.error(error);
+    } finally {
+      setLoader(false);
     }
   }
   return (
     <>
-      <button className="greenbtn" onClick={handleSplitClick}>
+      <button className="pricebtn flex justify-center w-72 h-10" onClick={handleSplitClick}>
         SPLIT
       </button>
     </>

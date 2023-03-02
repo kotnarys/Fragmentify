@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { BrowserProvider } from 'ethers';
 
-import split6 from '../../Contract/SplitContract';
+import split6 from '../../Contract/abi/splitContract/SplitContract';
 
 function PurchaseButton({ price, myVaultid }) {
   const [count, setCount] = useState("");

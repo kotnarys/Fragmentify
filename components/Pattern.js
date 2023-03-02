@@ -30,7 +30,7 @@ export default function Pattern() {
       setAddress(accounts[0]);
       fetchNFTs(accounts[0], contractAddress, setNFTs);
       fetchNFTs(
-        "0x1970C4F71e18330836063645a41Fbfa1e3a690ac",
+        "0xe9B8bc5179B9e95C6fdd91DCEDC1C19ee1Af0Dad",
         contractAddress,
         setNFTsOnMarket
       );
@@ -48,7 +48,7 @@ export default function Pattern() {
   return (
     <>
       <Fragment>
-        <div className="bg-patternbg">
+        <div className="bg-slate-200">
           <nav className="flex justify-between p-3 place-items-center">
             <Link href="/Home" className="p-1">
               <img
@@ -86,19 +86,19 @@ export default function Pattern() {
                 PROFILE
               </button>
             </div>
-            <div className="flex">
+            <div className="flex items-center space-x-3">
               <MintButton address={address} />
               {address ? (
-                <p className="bg-white rounded-full font-lalezar p-1 m-2">{`${address.slice(
+                <p className="flex justify-center items-center bg-blue-600 rounded-md font-lalezar w-36 h-7 hover:bg-blue-500 transition duration-500 ">{`${address.slice(
                   0,
                   4
                 )}...${address.slice(address.length - 4)}`}</p>
               ) : (
                 <button
-                  className="bg-white rounded-full font-lalezar w-48 h-7"
+                  className="bg-blue-600 rounded-md font-lalezar w-36 h-7 hover:bg-blue-500 transition duration-500 "
                   onClick={handleConnectWallet}
                 >
-                  Connect MetaMask
+                  Connect wallet
                 </button>
               )}
             </div>
@@ -113,7 +113,13 @@ export default function Pattern() {
                   setNFTonMarket={setNFTonMarket}
                 />
               ) : page === "resale" ? (
-                <Resale />
+                <Resale 
+                  address={address}
+                  NFTsOnMarket={NFTsOnMarket}
+                  setIsVisible={setShowModal}
+                  NFTs={NFTs}
+                  setNFTonMarket={setNFTonMarket}
+                />
               ) : (
                 <Profile
                   address={address}

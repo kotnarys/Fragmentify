@@ -54,6 +54,7 @@ contract LilFractional is Ownable {
 	/// @param minReservedToken Amount of tokens need to buy to mint 
 	/// @param tokenContract The ERC20 contract for the issued tokens
 	/// @param mintTime Time of split the ERC721 token (timestamp)
+	/// @param tokenAmountByOwner //
 
 	struct Vault {
 		ERC721 nftContract;
@@ -66,12 +67,6 @@ contract LilFractional is Ownable {
 		NFTShare tokenContract;
         uint mintTime;
         uint dayCount;
-		uint tokenAmountByOwner;
-	}
-
-	struct TokenOwner {
-		address owner;
-		uint amount;
 	}
 
 	/// EVENTS ///
@@ -103,8 +98,6 @@ contract LilFractional is Ownable {
     mapping(address => uint) public payedTokens; // amount of tokens that buyer reserved
     mapping(address => uint) public recievedMoney; // amount of money that buyer reserved by voult
     mapping(uint => uint) public vaultToOwner; // amount of money on a voult's owner contract 
-	mapping(uint => TokenOwner) public vaultToAddress; // amount of voult's tokens by address
-	
 
 	/// @notice Fractionalize an ERC721 token
 	/// @param nftContract The ERC721 contract for the token you're fractionalizing
@@ -134,14 +127,13 @@ contract LilFractional is Ownable {
 			tokenSupply: 0,
 			tokenContract: tokenContract,
             mintTime: block.timestamp,
-            dayCount: _dayCount,
-			tokenAmountByOwner: 0
+            dayCount: _dayCount
             
 		});
 		getVault[vaultId] = vault;
 		nftContract.transferFrom(msg.sender, address(this), tokenId); // отправляет nft на этот адрес 
 		vaultId++;
-		emit VaultCreated(vault);
+		// emit VaultCreated(vault);
 	}
 
 	/// @notice ERC20 token reservation function
@@ -154,7 +146,6 @@ contract LilFractional is Ownable {
         recievedMoney[msg.sender] += totalPrice;
 		require(msg.value == totalPrice, "not enough money");
 		vault.tokenSupply += _amount;
-		vault.tokenAmountByOwner[_vaultId][msg.sender] += _amount;
         payedTokens[msg.sender] += _amount;
         reservedToken += _amount;
         vaultToOwner[_vaultId] += totalPrice;
@@ -182,9 +173,7 @@ contract LilFractional is Ownable {
             payedTokens[msg.sender] = 0;
             vault.tokenSupply -= amount;
             getVault[_vaultId] = vault;
-
 			emit refundMoney(msg.sender, _vaultId, amount);
-
         }
     }
 
