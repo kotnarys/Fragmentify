@@ -1,10 +1,4 @@
-const NftCard = ({
-  image,
-  id,
-  title,
-  count,
-  price,
-}) => {
+const NftCard = ({ image, id, title, count, price }) => {
   return (
     <div className="w-56  mr-3  ml-3 bg-slate-100 rounded-xl">
       <div className="flex w-56 h-56 justify-center items-center rounded-xl bg-nftbg">
@@ -29,7 +23,6 @@ const NftCard = ({
                 {count}
               </h2>
             ) : null}
-
             {price ? (
               <h2 className="text-xl font-lalezar flex flex-col items-center">
                 {price}

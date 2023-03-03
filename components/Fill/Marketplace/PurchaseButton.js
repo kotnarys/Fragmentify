@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { BrowserProvider } from 'ethers';
 
-import split6 from '../../Contract/SplitContract';
+import split7 from '../../Contract/abi/splitContract/SplitContract';
 
 function PurchaseButton({ price, myVaultid }) {
   const [count, setCount] = useState("");
@@ -11,7 +11,7 @@ function PurchaseButton({ price, myVaultid }) {
     e.preventDefault();
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const splitb = split6.connect(signer);
+    const splitb = split7.connect(signer);
     const totalPrice = price * BigInt(count);
     const id = myVaultid + 1;
 

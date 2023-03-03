@@ -2,7 +2,7 @@ import React from "react";
 
 import { BrowserProvider } from "ethers";
 
-import NFT8 from "./Contract/NftContract.js";
+import NFT8 from "./Contract/abi/nftContract/NftContract.js";
 
 function MintButton({ address }) {
   async function handleMintClick() {

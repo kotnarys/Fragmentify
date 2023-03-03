@@ -1,8 +1,13 @@
 // Go to www.alchemy.com and create an account to grab your own api key!
-const apiKey = "sKaPjjjxG03aHv0sJPVMc0HeqYNI6iC2";
+const apiKey = "VVS4XV8Tv4DDGtCKftZZOeqLHB-K3aaE";
 const endpoint = `https://polygon-mumbai.g.alchemy.com/v2/${apiKey}`;
 
-const fetchNFTs = async (owner, contractAddress, setNFTs, retryAttempt) => {
+export const fetchNFTs = async (
+  owner,
+  contractAddress,
+  setNFTs,
+  retryAttempt
+) => {
   if (retryAttempt === 5) {
     return;
   }
@@ -21,11 +26,8 @@ const fetchNFTs = async (owner, contractAddress, setNFTs, retryAttempt) => {
     } catch (e) {
       fetchNFTs(endpoint, owner, contractAddress, setNFTs, retryAttempt + 1);
     }
-    if(data) {
-      setNFTs(data.ownedNfts);
-    }
+
+    setNFTs(data.ownedNfts);
     return data;
   }
 };
-
-export default fetchNFTs;

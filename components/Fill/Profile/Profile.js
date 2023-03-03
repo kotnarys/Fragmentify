@@ -98,7 +98,7 @@ function Profile({
               )}
             </section>
           </div>
-          <div>
+          {/* <div>
             <section className="flex flex-wrap justify-center">
               {NFTsOnMarket ? (
                 NFTsOnMarket.map((NFT) => {
@@ -155,7 +155,7 @@ function Profile({
                 </div>
               )}
             </section>
-          </div>
+          </div> */}
         </div>
       </div>
 

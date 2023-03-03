@@ -1,17 +1,11 @@
-import React, {
-  Fragment,
-  useEffect,
-  useState,
-} from 'react';
-
-import Link from 'next/link';
-
-import Marketplace from './Fill/Marketplace/Marketplace.js';
-import SplitModal from './Fill/Profile/ModalSplit';
-import Profile from './Fill/Profile/Profile';
-import Resale from './Fill/Resale/Resale.js';
-import MintButton from './MintButton';
-import fetchNFTs from './NFT/fetchNFTs.js';
+import React, { Fragment, useEffect, useState } from "react";
+import Link from "next/link";
+import Marketplace from "./Fill/Marketplace/Marketplace.js";
+import SplitModal from "./Fill/Profile/ModalSplit";
+import Profile from "./Fill/Profile/Profile";
+import Resale from "./Fill/Resale/Resale.js";
+import MintButton from "./MintButton";
+import { fetchNFTs } from "./NFT/fetchNFTs.js";
 
 export default function Pattern() {
   const [NFTonMarket, setNFTonMarket] = useState([]);
@@ -30,7 +24,7 @@ export default function Pattern() {
       setAddress(accounts[0]);
       fetchNFTs(accounts[0], contractAddress, setNFTs);
       fetchNFTs(
-        "0x1970C4F71e18330836063645a41Fbfa1e3a690ac",
+        "0xe9B8bc5179B9e95C6fdd91DCEDC1C19ee1Af0Dad",
         contractAddress,
         setNFTsOnMarket
       );
@@ -113,7 +107,13 @@ export default function Pattern() {
                   setNFTonMarket={setNFTonMarket}
                 />
               ) : page === "resale" ? (
-                <Resale />
+                <Resale
+                  address={address}
+                  NFTsOnMarket={NFTsOnMarket}
+                  setIsVisible={setShowModal}
+                  NFTs={NFTs}
+                  setNFTonMarket={setNFTonMarket}
+                />
               ) : (
                 <Profile
                   address={address}

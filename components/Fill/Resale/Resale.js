@@ -1,6 +1,6 @@
 import React from "react";
 
-function Resale() {
+function Resale({ }) {
   return (
     <>
       <div className="h-96 flex pl-16 pt-5">

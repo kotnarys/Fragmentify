@@ -9,7 +9,7 @@ import {
 } from 'ethers';
 import uuid from 'react-uuid';
 
-import split6 from '../../Contract/SplitContract';
+import split7 from '../../Contract/abi/splitContract/SplitContract';
 import NftCard from '../../NFT/NftCard.jsx';
 import handleClaimButtom from './ClaimButton';
 import PurchaseButton from './PurchaseButton.js';
@@ -22,7 +22,7 @@ function Marketplace({ address, NFTsOnMarket }) {
   async function myVaults(id, contract) {
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const splitb = split6.connect(signer);
+    const splitb = split7.connect(signer);
     {
       const vaultlength = Number(await splitb.vaultId());
       for (let i = 1; i < vaultlength; i++) {
