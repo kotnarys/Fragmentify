@@ -1,16 +1,13 @@
-import React, {
-  Fragment,
-  useState,
-} from 'react';
+import React, { Fragment, useEffect, useState } from "react";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-import Marketplace from './Fill/Marketplace/Marketplace.js';
-import SplitModal from './Fill/Profile/ModalSplit';
-import Profile from './Fill/Profile/Profile';
-import Resale from './Fill/Resale/Resale.js';
-import MintButton from './MintButton';
-import fetchNFTs from './NFT/fetchNFTs.js';
+import Marketplace from "./Fill/Marketplace/Marketplace.js";
+import SplitModal from "./Fill/Profile/ModalSplit";
+import Profile from "./Fill/Profile/Profile";
+import Resale from "./Fill/Resale/Resale.js";
+import MintButton from "./MintButton";
+import fetchNFTs from "./NFT/fetchNFTs.js";
 
 export default function Pattern() {
   const [NFTonMarket, setNFTonMarket] = useState([]);
@@ -29,6 +26,17 @@ export default function Pattern() {
       setAddress(accounts[0]);
       fetchNFTs(accounts[0], contractAddress, setNFTs);
       fetchNFTs(
+        "0xcf02e7843de8E0d25858b5736494B2af1c679E33",
+        contractAddress,
+        setNFTsOnMarket
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const connectMarketPlace = async () => {
+    try {
+      fetchNFTs(
         "0xe9B8bc5179B9e95C6fdd91DCEDC1C19ee1Af0Dad",
         contractAddress,
         setNFTsOnMarket
@@ -37,6 +45,9 @@ export default function Pattern() {
       console.error(error);
     }
   };
+  useEffect(() => {
+    connectMarketPlace();
+  }, []);
 
   return (
     <>
@@ -88,7 +99,7 @@ export default function Pattern() {
                 )}...${address.slice(address.length - 4)}`}</p>
               ) : (
                 <button
-                  className="bg-blue-600 rounded-md font-lalezar w-36 h-7 hover:bg-blue-500 transition duration-500 "
+                  className="bg-white rounded-md font-lalezar w-36 h-7 hover:bg-blue-500 transition duration-500 "
                   onClick={handleConnectWallet}
                 >
                   Connect wallet
@@ -132,6 +143,8 @@ export default function Pattern() {
           NFTonMarket={NFTonMarket}
         />
       </Fragment>
+
+      <> </>
     </>
   );
 }

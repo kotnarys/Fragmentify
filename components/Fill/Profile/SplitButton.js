@@ -31,7 +31,7 @@ function SplitButton({
     try {
       setLoader(true);
       const aprove = await nft.approve(
-        "0xe9B8bc5179B9e95C6fdd91DCEDC1C19ee1Af0Dad",
+        "0xcf02e7843de8E0d25858b5736494B2af1c679E33",
         BigInt(idNFT)
       );
       await aprove.wait();
@@ -55,7 +55,10 @@ function SplitButton({
   }
   return (
     <>
-      <button className="pricebtn flex justify-center w-72 h-10" onClick={handleSplitClick}>
+      <button
+        className="pricebtn flex justify-center w-72 h-10"
+        onClick={handleSplitClick}
+      >
         SPLIT
       </button>
     </>

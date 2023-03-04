@@ -9,7 +9,7 @@ const NftCard = ({
   price,
 }) => {
   return (
-    <div className="w-56  mr-3  ml-3 bg-slate-100 rounded-xl">
+    <div className="w-56  mr-3  ml-3 bg-slate-100 rounded-lg">
       <div className="flex w-56 h-56 justify-center items-center rounded-xl bg-nftbg">
         {image ? (
           <img

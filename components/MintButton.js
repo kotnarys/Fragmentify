@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { BrowserProvider } from 'ethers';
+import { BrowserProvider } from "ethers";
 
-import NFT8 from './Contract/abi/nftContract/NftContract.js';
+import NFT8 from "./Contract/abi/nftContract/NftContract.js";
 
 function MintButton({ address }) {
   async function handleMintClick() {
@@ -13,7 +13,7 @@ function MintButton({ address }) {
     try {
       await nft.safeMint(
         address,
-        "QmPnSHCKbBD81K7sKUi4BVn7KgnkaSrzMYTwA8MVyHwVmL "
+        "QmS5doNV9CuxMtWS6cWgTuogv97TtXi91t9Exk42V5GaXh "
       );
     } catch (error) {
       console.error(error);

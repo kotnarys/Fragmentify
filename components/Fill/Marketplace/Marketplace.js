@@ -1,23 +1,30 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from "react";
 
-import {
-  BrowserProvider,
-  formatEther,
-} from 'ethers';
-import uuid from 'react-uuid';
+import { BrowserProvider, formatEther } from "ethers";
+import uuid from "react-uuid";
 
-import split7 from '../../Contract/abi/splitContract/SplitContract';
-import NftCard from '../../NFT/NftCard.jsx';
-import handleClaimButtom from './ClaimButton';
-import PurchaseButton from './PurchaseButton.js';
+import split7 from "../../Contract/abi/splitContract/SplitContract";
+import NftCard from "../../NFT/NftCard.jsx";
+import handleClaimButtom from "./ClaimButton";
+import PurchaseButton from "./PurchaseButton.js";
 
 function Marketplace({ NFTsOnMarket }) {
   const [myVaultid, setMyVaultId] = useState();
   const [myVault, setMyVault] = useState([]);
-  const [count, setCount] = useState();
+
+  async function newVault() {
+    const provider = new BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+    const splitb = split7.connect(signer);
+
+    const vaultlength = Number(await splitb.vaultId());
+    const arr = [];
+    for (let i = 0; i < vaultlength; i++) {
+      const vaultik = await splitb.getVault(BigInt(i));
+      arr.push(vaultik);
+    }
+    setMyVault(arr);
+  }
 
   async function myVaults(id, contract) {
     const provider = new BrowserProvider(window.ethereum);
@@ -25,13 +32,11 @@ function Marketplace({ NFTsOnMarket }) {
     const splitb = split7.connect(signer);
     {
       const vaultlength = Number(await splitb.vaultId());
-      for (let i = 1; i < vaultlength; i++) {
+      for (let i = 0; i < vaultlength; i++) {
         const vault = await splitb.getVault(BigInt(i));
         if (vault[0].toLowerCase() == contract && vault[3] == BigInt(id)) {
           setMyVaultId(i);
         }
-
-        setMyVault((myVault) => [...myVault, vault]);
       }
     }
   }
@@ -43,7 +48,9 @@ function Marketplace({ NFTsOnMarket }) {
   }, [myVaultid]);
 
   useEffect(() => {
-    myVaults();
+    (async () => {
+      await newVault();
+    })();
   }, []);
 
   return (
@@ -82,7 +89,6 @@ function Marketplace({ NFTsOnMarket }) {
                             <PurchaseButton
                               price={myVault[i][2]}
                               myVaultid={i}
-                              count={count}
                             />
                           </div>
                           <button
