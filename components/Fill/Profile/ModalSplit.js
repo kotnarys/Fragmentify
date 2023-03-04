@@ -26,7 +26,7 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
       onClick={handleClose}
     >
       <div className=" animate-pulsets w-[1000px] flex flex-col">
-        <div className="bg-slate-700 rounded-lg">
+        <div className="bg-slate-600 rounded-lg">
           <div className=" flex justify-center h-[700px] text-black">
             <div className="flex items-center flex-col">
               <h1 className="text-center my-3 text-white font-lalezar text-5xl">
@@ -41,12 +41,12 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                     value={count}
                     onChange={(e) => setCount(e.target.value)}
                     htmlFor="Count"
-                    className="text-xl mb-3 p-1 font-lalezar flex flex-col items-center justify-center bg-nftbg w-[436px] text-black rounded-lg"
+                    className="text-xl mb-3 p-1 font-lalezar flex flex-col items-center justify-center bg-nftbg w-[436px] text-black rounded-b-lg"
                   >
                     Total supply:
                     <input
                       id="Count"
-                      className=" h-5 bg-nftbg w-40 text-black text-center"
+                      className=" h-5 bg-nftbg w-40 text-black text-center outline-none"
                       placeholder="2-99999"
                     />
                   </label>
@@ -54,12 +54,12 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                     value={piecePrice}
                     onChange={(e) => setPiecePrice(e.target.value)}
                     htmlFor="PiecePrice"
-                    className="text-xl m-3 p-1 font-lalezar flex flex-col items-center bg-nftbg w-[436px] text-black rounded-lg"
+                    className="text-xl m-3 p-1 font-lalezar flex flex-col items-center bg-nftbg w-[436px] text-black rounded-b-lg "
                   >
                     Price for 1 piece:
                     <input
                       id="PiecePrice"
-                      className=" h-5 bg-nftbg w-40 text-black text-center"
+                      className=" h-5 bg-nftbg w-40 text-black text-center outline-none"
                       placeholder="ETH"
                     />
                   </label>
@@ -74,12 +74,12 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                       value={period}
                       onChange={(e) => setPeriod(e.target.value)}
                       htmlFor="Period"
-                      className="text-xl m-1 p-1 font-lalezar flex flex-col items-center bg-nftbg w-52 text-black rounded-lg"
+                      className="text-xl m-1 p-1 font-lalezar flex flex-col items-center bg-nftbg w-52 text-black rounded-b-lg"
                     >
                       Lock period:
                       <input
                         id="Period"
-                        className=" h-5 bg-nftbg w-40 text-black text-center"
+                        className=" h-5 bg-nftbg w-40 text-black text-center outline-none"
                         placeholder="*30sec"
                       />
                     </label>
@@ -87,12 +87,12 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                       value={fractionCount}
                       onChange={(e) => setFractionCount(e.target.value)}
                       htmlFor="Fraction count"
-                      className="text-xl m-1 p-1 font-lalezar flex flex-col items-center bg-nftbg w-2/3 text-black rounded-lg"
+                      className="text-xl m-1 p-1 font-lalezar flex flex-col items-center bg-nftbg w-2/3 text-black rounded-b-lg"
                     >
                       Minimum mint quantity:
                       <input
                         id="Fraction count"
-                        className="flex h-5 bg-nftbg w-40 text-black text-center"
+                        className="flex h-5 bg-nftbg w-40 text-black text-center outline-none"
                         placeholder="1-99999"
                       />
                     </label>
@@ -109,7 +109,7 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                     />
                   </div>
                 </div>
-                <div className="w-[480px]  bg-white h-[490px] ml-5 flex items-center justify-center rounded-lg">
+                <div className="w-[480px]  bg-white h-[490px] ml-5 flex items-center justify-center rounded-b-lg">
                   <img
                     src={NFTonMarket.media[0].gateway}
                     className="w-[460px] border-b-8 border-slate-400 border 1"

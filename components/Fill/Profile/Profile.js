@@ -86,7 +86,7 @@ function Profile({
 
                           <button
                             id="splitbutton"
-                            className="buybtn w-44 m-1"
+                            className="splitbtn mt-2"
                             onClick={(e) => {
                               if (e.target.id == "splitbutton") {
                                 handleSplitClick(NFT);
@@ -158,7 +158,7 @@ function Profile({
                             ) {
                               return (
                                 <div
-                                  className=" transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center "
+                                  className="mb-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center "
                                   key={uuid()}
                                 >
                                   <NftCard
@@ -177,7 +177,7 @@ function Profile({
                                   ) : (
                                     <button
                                       id="joinButton"
-                                      className=" buybtn w-44 m-1"
+                                      className="getbackbtn mt-2"
                                       onClick={(e) => {
                                         if (e.target.id == "joinButton") {
                                           myVaults(

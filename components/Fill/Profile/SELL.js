@@ -35,24 +35,27 @@ function SellButton({ adr }) {
   }
   return (
     <>
-      <form onSubmit={handleSellSubmit}>
-        <input
-          value={price}
-          placeholder="ETH price"
-          className=" rounded-xl w-24 h-8 mr-5 text-center font-lalezar"
-          onChange={(e) => {
-            setPrice(e.target.value);
-          }}
-        />
-        <input
-          value={amount}
-          placeholder="Enter amount"
-          className=" rounded-xl w-24 h-8 mr-5 text-center font-lalezar"
-          onChange={(e) => {
-            setAmount(e.target.value);
-          }}
-        />
-        <button className="redbtn flex justify-center w-72 h-10">SELL</button>
+      <form onSubmit={handleSellSubmit} className="flex flex-col items-center space-y-2">
+        <div className="flex flex-row mt-2 space-x-2">
+            <input
+            value={price}
+            placeholder="ETH price"
+            className="enterbtn "
+            onChange={(e) => {
+                setPrice(e.target.value);
+            }}
+            />
+            <input
+            value={amount}
+            placeholder="Enter amount"
+            className="enterbtn"
+            onChange={(e) => {
+                setAmount(e.target.value);
+            }}
+            />
+            </div>
+       
+        <button className="sellbtn">SELL</button>
       </form>
     </>
   );

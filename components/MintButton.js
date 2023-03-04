@@ -23,10 +23,10 @@ function MintButton({ address }) {
   return (
     <>
       <button
-        className="bg-white rounded-md font-lalezar h-7 transition duration-500 w-20"
+        className="mintbtn"
         onClick={handleMintClick}
       >
-        MINT
+        TEST MINT
       </button>
     </>
   );

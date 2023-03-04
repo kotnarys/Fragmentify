@@ -56,7 +56,7 @@ function SplitButton({
   return (
     <>
       <button
-        className="pricebtn flex justify-center w-72 h-10"
+        className="splitbtn"
         onClick={handleSplitClick}
       >
         SPLIT

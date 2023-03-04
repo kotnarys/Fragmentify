@@ -69,3 +69,31 @@ img {
 .claimbtn {
   @apply flex items-center justify-center rounded-md font-lalezar bg-violet-700  active:translate-y-1  text-gray-300 hover:bg-violet-600  hover:border-solid hover:border-slate-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] transition duration-300;
 }
+
+.sellbtn {
+  @apply flex items-center justify-center font-lalezar align-middle bg-rose-600 rounded-lg w-52 h-8 text-xl  text-gray-300 hover:bg-rose-500 hover:shadow-slate-500 leading-normal transition duration-200;
+}
+
+.enterbtn {
+    @apply flex items-center justify-center font-lalezar align-middle bg-slate-200  w-24 h-8 text-sm text-center   hover:bg-slate-50 hover:shadow-slate-500 leading-normal outline-none transition duration-200;
+}
+
+.splitbtn {
+    @apply flex items-center justify-center font-lalezar align-middle bg-green-600 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-green-500 hover:shadow-slate-500 leading-normal transition duration-200;
+}
+
+.mintbtn {
+    @apply flex items-center justify-center font-lalezar align-middle rounded-bl-lg  bg-slate-600  w-24 h-7 text-sm  text-gray-300 hover:bg-slate-800 hover:shadow-slate-500  transition duration-200;
+}
+
+.walletconnectbtn {
+    @apply flex items-center justify-center font-lalezar align-middle rounded-bl-lg  bg-slate-600  w-24 h-7 text-sm  text-gray-300 hover:bg-slate-800 hover:shadow-slate-500  transition duration-200;
+}
+
+.menu {
+    @apply p-2 text-3xl active:translate-y-1 text-gray-600 hover:text-gray-800 font-lalezar disabled:text-black disabled:active:translate-y-0 hover:shadow-slate-500  transition duration-200
+}
+
+.getbackbtn {
+    @apply flex items-center justify-center font-lalezar align-middle bg-orange-400 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-orange-500 hover:shadow-slate-500 leading-normal transition duration-200;
+}
