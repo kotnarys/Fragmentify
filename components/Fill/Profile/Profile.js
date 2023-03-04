@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, {
+    useEffect,
+    useState,
+} from 'react';
 
-import { BrowserProvider } from "ethers";
-import uuid from "react-uuid";
+import { BrowserProvider } from 'ethers';
+import uuid from 'react-uuid';
 
-import split7 from "../../Contract/abi/splitContract/SplitContract";
-import ERC20Card from "../../NFT/ERC20Card.jsx";
-import NftCard from "../../NFT/NftCard.jsx";
-import handleJoinClick from "./JoinButton";
+import split7 from '../../Contract/abi/splitContract/SplitContract';
+import ERC20Card from '../../NFT/ERC20Card.jsx';
+import NftCard from '../../NFT/NftCard.jsx';
+import handleJoinClick from './JoinButton';
 
 function Profile({
   address,
@@ -123,6 +126,7 @@ function Profile({
                               title={NFT.title}
                               address={address}
                               tokenadr={allVault[i][7]}
+                              myVaultid={i}
                               count={Number(allVault[i][5])}
                             ></ERC20Card>
                           </div>

@@ -10,9 +10,9 @@ import {
 
 import defaultProvider from '../Contract/abi/defaultProvider.js';
 import abi from '../Contract/abi/marketToken/erc20abi.json';
+import handleJoin from '../Fill/Profile/join.js';
 import SellButton from '../Fill/Profile/SELL.js';
 import BuyButton from '../Fill/Resale/BuyToken.js';
-import handleJoin from '../Fill/Resale/join.js';
 
 const ERC20Card = ({
   image,
@@ -32,10 +32,14 @@ const ERC20Card = ({
   const [balance, setBalance] = useState();
   const [active, setActive] = useState(false);
 
-  console.log("vault id", myVaultid);
-
-  function handleActive() {
+  function handleActive(myVaultid) {
     setActive(true);
+  }
+
+  function handleJoinClick(myVaultid) {
+    console.log("start");
+
+    handleJoin(myVaultid, balance, tokenadr);
   }
 
   useEffect(() => {
@@ -121,7 +125,15 @@ const ERC20Card = ({
             />
           )}
           {Number(balance) == count ? (
-            <button onClick={handleJoin(myVaultid)} className="greenbtn">
+            <button
+              id="joinbtn"
+              className="greenbtn"
+              onClick={(e) => {
+                if (e.target.id == "joinbtn") {
+                  handleJoinClick(myVaultid);
+                }
+              }}
+            >
               JOIN
             </button>
           ) : null}

@@ -91,7 +91,6 @@ function Resale({ address, NFTsOnMarket }) {
                 {token.map((erc20, index) => {
                   for (let y = 0; y < NFTsOnMarket.length; y++) {
                     for (let x = 1; x < allVault.length; x++) {
-                      console.log("x = ");
                       if (
                         allVault[x][0].toLowerCase() ==
                           NFTsOnMarket[y].contract.address &&
@@ -114,7 +113,6 @@ function Resale({ address, NFTsOnMarket }) {
                                 count={Number(allVault[x][5])}
                                 tokenid={index}
                                 totalPrice={erc20[2]}
-                                myVaultid={x}
                               ></ERC20Card>
                             </div>
                           );
