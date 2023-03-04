@@ -93,7 +93,7 @@ function Marketplace({ NFTsOnMarket }) {
                           </div>
                           <button
                             id="claimButton"
-                            className="rounded-xl w-56 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-green-700 transition ease-in-out delay-150  hover:bg-green-400 duration-350  m-2"
+                            className="claimbtn mt-2"
                             onClick={(e) => {
                               if (e.target.id == "claimButton") {
                                 myVaults(NFT.id.tokenId, NFT.contract.address);

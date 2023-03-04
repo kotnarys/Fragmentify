@@ -19,7 +19,7 @@ function BuyButton({ totalPrice, tokenid, tokenadr }) {
   }
   return (
     <>
-      <button onClick={handleBuyClick} className=" m-2 greenbtn">
+      <button onClick={handleBuyClick} className="m-2 buybtn">
         BUY
       </button>
     </>

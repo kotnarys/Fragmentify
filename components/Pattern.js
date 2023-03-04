@@ -52,7 +52,7 @@ export default function Pattern() {
   return (
     <>
       <Fragment>
-        <div className="bg-gray-50">
+        <div className="bg-blue-100">
           <nav className="flex justify-between pr-16 place-items-center align-middle">
             <Link href="/Home" className="p-1">
               <img

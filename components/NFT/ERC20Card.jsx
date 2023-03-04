@@ -127,7 +127,7 @@ const ERC20Card = ({
           {Number(balance) == count ? (
             <button
               id="joinbtn"
-              className="greenbtn"
+              className="joinbtn mt-2"
               onClick={(e) => {
                 if (e.target.id == "joinbtn") {
                   handleJoinClick(myVaultid);

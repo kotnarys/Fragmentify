@@ -57,7 +57,7 @@ export default function Home() {
             src="fullFox.png"
           />
         </div>
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col items-center">
           <div className="flex flex-col border-2 border-slate-400 items-center w-[450px] h-64 bg-violet-200 rounded-2xl ml-96">
             <h1 className="font-lalezar text-purple-500 text-center m-3 text-3xl ">
               FRAGMENTIFY
