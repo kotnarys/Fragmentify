@@ -37,7 +37,7 @@ export default function Pattern() {
   const connectMarketPlace = async () => {
     try {
       fetchNFTs(
-        "0xe9B8bc5179B9e95C6fdd91DCEDC1C19ee1Af0Dad",
+        "0xcf02e7843de8E0d25858b5736494B2af1c679E33",
         contractAddress,
         setNFTsOnMarket
       );

@@ -1,18 +1,13 @@
-import React, {
-    useEffect,
-    useState,
-} from 'react';
+import React, { useEffect, useState } from "react";
 
-import {
-    BrowserProvider,
-    Contract,
-} from 'ethers';
+import { BrowserProvider, Contract } from "ethers";
 
-import defaultProvider from '../Contract/abi/defaultProvider.js';
-import abi from '../Contract/abi/marketToken/erc20abi.json';
-import handleJoin from '../Fill/Profile/join.js';
-import SellButton from '../Fill/Profile/SELL.js';
-import BuyButton from '../Fill/Resale/BuyToken.js';
+import defaultProvider from "../Contract/abi/defaultProvider.js";
+import abi from "../Contract/abi/marketToken/erc20abi.json";
+import CancelSellButton from "../Fill/Profile/canSelButton.js";
+import handleJoin from "../Fill/Profile/join.js";
+import SellButton from "../Fill/Profile/SELL.js";
+import BuyButton from "../Fill/Resale/BuyToken.js";
 
 const ERC20Card = ({
   image,
@@ -28,17 +23,18 @@ const ERC20Card = ({
   tokenid,
   totalPrice,
   myVaultid,
+  seller,
+  cansel,
+  myAddr,
 }) => {
   const [balance, setBalance] = useState();
   const [active, setActive] = useState(false);
 
-  function handleActive(myVaultid) {
+  function handleActive() {
     setActive(true);
   }
 
   function handleJoinClick(myVaultid) {
-    console.log("start");
-
     handleJoin(myVaultid, balance, tokenadr);
   }
 
@@ -68,77 +64,135 @@ const ERC20Card = ({
   }
   return (
     <>
-      {balance ? (
+      {cansel == "cancelsell" ? (
+        myAddr == seller.toLowerCase() ? (
+          <>
+            {" "}
+            <>
+              {balance ? (
+                <>
+                  <div className="w-56  mr-3  ml-3 bg-slate-100 rounded-lg">
+                    <div className="flex w-56 h-56 justify-center items-center rounded-xl bg-nftbg">
+                      {image ? (
+                        <img
+                          className="flex justify-center items-center w-52 h-52"
+                          key={id}
+                          src={image}
+                        ></img>
+                      ) : (
+                        "NO IMAGE"
+                      )}
+                    </div>
+
+                    <div className="p-3">
+                      <div>
+                        <div className="flex-grow">
+                          <h2 className="text-xl font-lalezar flex flex-col items-center">
+                            {title}
+                          </h2>
+
+                          {count ? (
+                            <h2 className="text-xl font-lalezar flex flex-col items-center">
+                              {address ==
+                              "0x47ca9D580EC559e725920B0a6F6729E487816232"
+                                ? Number(amount)
+                                : balance}
+                              /{count}
+                            </h2>
+                          ) : null}
+
+                          {price ? (
+                            <h2 className="text-xl font-lalezar flex flex-col items-center">
+                              {price}
+                            </h2>
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <CancelSellButton tokenadr={tokenadr} tokenid={tokenid} />
+                </>
+              ) : null}
+            </>
+          </>
+        ) : null
+      ) : (
         <>
           {" "}
-          <div className="w-56  mr-3  ml-3 bg-slate-100 rounded-lg">
-            <div className="flex w-56 h-56 justify-center items-center rounded-xl bg-nftbg">
-              {image ? (
-                <img
-                  className="flex justify-center items-center w-52 h-52"
-                  key={id}
-                  src={image}
-                ></img>
-              ) : (
-                "NO IMAGE"
-              )}
-            </div>
+          {balance ? (
+            <>
+              {" "}
+              <div className="w-56  mr-3  ml-3 bg-slate-100 rounded-lg">
+                <div className="flex w-56 h-56 justify-center items-center rounded-xl bg-nftbg">
+                  {image ? (
+                    <img
+                      className="flex justify-center items-center w-52 h-52"
+                      key={id}
+                      src={image}
+                    ></img>
+                  ) : (
+                    "NO IMAGE"
+                  )}
+                </div>
 
-            <div className="p-3">
-              <div>
-                <div className="flex-grow">
-                  <h2 className="text-xl font-lalezar flex flex-col items-center">
-                    {title}
-                  </h2>
+                <div className="p-3">
+                  <div>
+                    <div className="flex-grow">
+                      <h2 className="text-xl font-lalezar flex flex-col items-center">
+                        {title}
+                      </h2>
 
-                  {count ? (
-                    <h2 className="text-xl font-lalezar flex flex-col items-center">
-                      {address == "0x47ca9D580EC559e725920B0a6F6729E487816232"
-                        ? Number(amount)
-                        : balance}
-                      /{count}
-                    </h2>
-                  ) : null}
+                      {count ? (
+                        <h2 className="text-xl font-lalezar flex flex-col items-center">
+                          {address ==
+                          "0x47ca9D580EC559e725920B0a6F6729E487816232"
+                            ? Number(amount)
+                            : balance}
+                          /{count}
+                        </h2>
+                      ) : null}
 
-                  {price ? (
-                    <h2 className="text-xl font-lalezar flex flex-col items-center">
-                      {price}
-                    </h2>
-                  ) : null}
+                      {price ? (
+                        <h2 className="text-xl font-lalezar flex flex-col items-center">
+                          {price}
+                        </h2>
+                      ) : null}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          {address != "0x47ca9D580EC559e725920B0a6F6729E487816232" ? (
-            active ? (
-              <SellButton adr={tokenadr} />
-            ) : (
-              <button onClick={handleActive} className="sellbtn m-2">
-                SELL
-              </button>
-            )
-          ) : (
-            <BuyButton
-              tokenadr={tokenadr}
-              tokenid={tokenid}
-              totalPrice={totalPrice}
-            />
-          )}
-          {Number(balance) == count ? (
-            <button
-              id="joinbtn"
-              className="joinbtn mt-2"
-              onClick={(e) => {
-                if (e.target.id == "joinbtn") {
-                  handleJoinClick(myVaultid);
-                }
-              }}
-            >
-              JOIN
-            </button>
+              {address != "0x47ca9D580EC559e725920B0a6F6729E487816232" ? (
+                active ? (
+                  <SellButton adr={tokenadr} />
+                ) : (
+                  <button onClick={handleActive} className="sellbtn m-2">
+                    SELL
+                  </button>
+                )
+              ) : (
+                <BuyButton
+                  tokenadr={tokenadr}
+                  tokenid={tokenid}
+                  totalPrice={totalPrice}
+                />
+              )}
+              {Number(balance) == count ? (
+                <button
+                  id="joinbtn"
+                  className="joinbtn mt-2"
+                  onClick={(e) => {
+                    if (e.target.id == "joinbtn") {
+                      handleJoinClick(myVaultid);
+                    }
+                  }}
+                >
+                  JOIN
+                </button>
+              ) : null}
+            </>
           ) : null}
         </>
-      ) : null}
+      )}
     </>
   );
 };

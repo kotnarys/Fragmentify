@@ -1,39 +1,20 @@
-import React, {
-    useEffect,
-    useState,
-} from 'react';
+import React, { useEffect, useState } from "react";
 
-import { BrowserProvider } from 'ethers';
-import uuid from 'react-uuid';
+import { BrowserProvider } from "ethers";
+import uuid from "react-uuid";
 
-import marketContract from '../../Contract/abi/market/marketContract';
-import split7 from '../../Contract/abi/splitContract/SplitContract';
-import ERC20Card from '../../NFT/ERC20Card.jsx';
+import marketContract from "../../Contract/abi/market/marketContract";
+import split7 from "../../Contract/abi/splitContract/SplitContract";
+import ERC20Card from "../../NFT/ERC20Card.jsx";
 
-function Resale({ address, NFTsOnMarket }) {
-  const [myVaultid, setMyVaultId] = useState();
-  const [myVault, setMyVault] = useState([]);
+function Resale({ NFTsOnMarket }) {
   const [allVault, setAllVault] = useState([]);
-  const [balance, setBalance] = useState([]);
   const [token, setToken] = useState([]);
 
-  async function newVault() {
+  async function myVaults() {
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const splitb = split7.connect(signer);
-
-    const vaultlength = Number(await splitb.vaultId());
-    const arr = [];
-    for (let i = 0; i < vaultlength; i++) {
-      const vaultik = await splitb.getVault(BigInt(i));
-      arr.push(vaultik);
-    }
-    setMyVault(arr);
-  }
-
-  async function newMarket() {
-    const provider = new BrowserProvider(window.ethereum);
-    const signer = await provider.getSigner();
     const market = marketContract.connect(signer);
 
     const tokenslength = Number(await market.tokenCount());
@@ -43,42 +24,17 @@ function Resale({ address, NFTsOnMarket }) {
       arr1.push(vaultik1);
     }
     setToken(arr1);
-  }
 
-  async function myVaults(id, contract) {
-    const provider = new BrowserProvider(window.ethereum);
-    const signer = await provider.getSigner();
-    const splitb = split7.connect(signer);
+    const vaultlength = Number(await splitb.vaultId());
+    for (let i = 1; i < vaultlength; i++) {
+      const vault = await splitb.getVault(BigInt(i));
 
-    {
-      const vaultlength = Number(await splitb.vaultId());
-      for (let i = 1; i < vaultlength; i++) {
-        const vault = await splitb.getVault(BigInt(i));
-
-        if (vault[0].toLowerCase() == contract && vault[3] == BigInt(id)) {
-          setMyVaultId(i);
-        }
-
-        if (vault[1].toLowerCase() === address) {
-          setMyVault((myVault) => [...myVault, vault]);
-        }
-        setAllVault((allVault) => [...allVault, vault]);
-      }
+      setAllVault((allVault) => [...allVault, vault]);
     }
   }
-  useEffect(() => {
-    if (myVaultid > 0) {
-      handleJoinClick(myVaultid);
-    }
-  }, [myVaultid]);
 
   useEffect(() => {
     myVaults();
-  }, [address]);
-
-  useEffect(() => {
-    newVault();
-    newMarket();
   }, []);
 
   return (
