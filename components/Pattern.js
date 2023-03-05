@@ -52,7 +52,7 @@ export default function Pattern() {
   return (
     <>
       <Fragment>
-        <div className="bg-blue-100">
+        <div className="bg-gradient-to-br from-blue-300 to-blue-500">
           <nav className="flex justify-between pr-16 place-items-center align-middle">
             <Link href="/Home" className="p-1">
               <img
@@ -108,7 +108,7 @@ export default function Pattern() {
             </div>
           </nav>
           <div className=" flex justify-center">
-            <div className="min-h-[865px] bg-slate-600 w-11/12 mb-5 rounded-md">
+            <div className="min-h-[865px] w-11/12 mb-5 rounded-md bg-gradient-to-br from-gray-600 to-gray-700">
               {page === "market" ? (
                 <Marketplace
                   address={address}
