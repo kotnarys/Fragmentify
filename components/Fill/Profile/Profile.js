@@ -38,9 +38,9 @@ function Profile({
       arr1.push(vaultik1);
     }
     setToken(arr1);
-
+    let arr = [];
     const vaultlength = Number(await splitb.vaultId());
-    for (let i = 1; i < vaultlength; i++) {
+    for (let i = 0; i < vaultlength; i++) {
       const vault = await splitb.getVault(BigInt(i));
 
       if (vault[0].toLowerCase() == contract && vault[3] == BigInt(id)) {
@@ -50,8 +50,9 @@ function Profile({
       if (vault[1].toLowerCase() === address) {
         setMyVault((myVault) => [...myVault, vault]);
       }
-      setAllVault((allVault) => [...allVault, vault]);
+      arr.push(vault);
     }
+    setAllVault(arr);
   }
   useEffect(() => {
     if (myVaultid > 0) {
@@ -62,7 +63,6 @@ function Profile({
   useEffect(() => {
     myVaults();
   }, [address]);
-
   return (
     <>
       {address ? (
@@ -131,6 +131,7 @@ function Profile({
                               address={address}
                               tokenadr={allVault[i][7]}
                               count={Number(allVault[i][5])}
+                              myVaultid={i}
                             ></ERC20Card>
                           </div>
                         );

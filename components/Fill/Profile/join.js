@@ -1,15 +1,9 @@
-import {
-    BrowserProvider,
-    Contract,
-    InfuraProvider,
-} from 'ethers';
+import { BrowserProvider, Contract, InfuraProvider } from "ethers";
 
-import contractAbi from '../../Contract/abi/marketToken/erc20abi.json';
-import split7 from '../../Contract/abi/splitContract/SplitContract';
+import contractAbi from "../../Contract/abi/marketToken/erc20abi.json";
+import split7 from "../../Contract/abi/splitContract/SplitContract";
 
 async function handleJoin(myVaultid, balance, tokenadr) {
-  console.log(balance);
-
   const defaultProvider = new InfuraProvider("goerli");
 
   const provider = new BrowserProvider(window.ethereum);
