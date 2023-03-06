@@ -11,6 +11,8 @@ import PurchaseButton from "./PurchaseButton.js";
 function Marketplace({ NFTsOnMarket }) {
   const [myVaultid, setMyVaultId] = useState();
   const [myVault, setMyVault] = useState([]);
+  const [loader, setLoader] = useState(false);
+  const [active, setActive] = useState(true);
 
   async function newVault() {
     const provider = new BrowserProvider(window.ethereum);
@@ -90,13 +92,17 @@ function Marketplace({ NFTsOnMarket }) {
                             ></NftCard>
                             <div className="flex mt-2 ">
                               <PurchaseButton
+                                active={active}
+                                setActive={setActive}
                                 price={myVault[i][2]}
                                 myVaultid={i}
+                                loader={loader}
+                                setLoader={setLoader}
                               />
                             </div>
                             <button
                               id="claimButton"
-                              className="claimbtn mt-2"
+                              className="violetbtn mt-2"
                               onClick={(e) => {
                                 if (e.target.id == "claimButton") {
                                   myVaults(

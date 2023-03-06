@@ -28,11 +28,8 @@ const ERC20Card = ({
   myAddr,
 }) => {
   const [balance, setBalance] = useState();
-  const [active, setActive] = useState(false);
-
-  function handleActive() {
-    setActive(true);
-  }
+  const [loader, setLoader] = useState(false);
+  const [active, setActive] = useState(true);
 
   function handleJoinClick(myVaultid) {
     handleJoin(myVaultid, balance, tokenadr);
@@ -110,7 +107,12 @@ const ERC20Card = ({
                       </div>
                     </div>
                   </div>
-                  <CancelSellButton tokenadr={tokenadr} tokenid={tokenid} />
+                  <CancelSellButton
+                    tokenadr={tokenadr}
+                    tokenid={tokenid}
+                    loader={loader}
+                    setLoader={setLoader}
+                  />
                 </>
               ) : null}
             </>
@@ -162,15 +164,17 @@ const ERC20Card = ({
                 </div>
               </div>
               {address != "0x47ca9D580EC559e725920B0a6F6729E487816232" ? (
-                active ? (
-                  <SellButton adr={tokenadr} />
-                ) : (
-                  <button onClick={handleActive} className="sellbtn m-2">
-                    SELL
-                  </button>
-                )
+                <SellButton
+                  adr={tokenadr}
+                  loader={loader}
+                  setLoader={setLoader}
+                  active={active}
+                  setActive={setActive}
+                />
               ) : (
                 <BuyButton
+                  loader={loader}
+                  setLoader={setLoader}
                   tokenadr={tokenadr}
                   tokenid={tokenid}
                   totalPrice={totalPrice}
@@ -179,7 +183,7 @@ const ERC20Card = ({
               {Number(balance) == count ? (
                 <button
                   id="joinbtn"
-                  className="joinbtn mt-2"
+                  className="greenbtn mt-3"
                   onClick={(e) => {
                     if (e.target.id == "joinbtn") {
                       handleJoinClick(myVaultid);

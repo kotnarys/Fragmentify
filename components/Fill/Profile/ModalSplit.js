@@ -41,10 +41,13 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                     value={count}
                     onChange={(e) => setCount(e.target.value)}
                     htmlFor="Count"
-                    className="text-xl mb-3 p-1 font-lalezar flex flex-col items-center justify-center bg-nftbg w-[436px] text-black rounded-b-lg"
+                    className="text-xl mb-3 p-1 font-lalezar flex flex-col items-center justify-center bg-nftbg w-[436px] text-black rounded-md"
                   >
                     Total supply:
                     <input
+                      type="number"
+                      min={2}
+                      max={99999}
                       id="Count"
                       className=" h-5 bg-nftbg w-40 text-black text-center outline-none"
                       placeholder="2-99999"
@@ -52,19 +55,23 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                   </label>
                   <label
                     value={piecePrice}
+                    type="number"
                     onChange={(e) => setPiecePrice(e.target.value)}
                     htmlFor="PiecePrice"
-                    className="text-xl m-3 p-1 font-lalezar flex flex-col items-center bg-nftbg w-[436px] text-black rounded-b-lg "
+                    className="text-xl m-3 p-1 font-lalezar flex flex-col items-center bg-nftbg w-[436px] text-black rounded-md"
                   >
                     Price for 1 piece:
                     <input
+                      type="number"
+                      min={0.001}
+                      step={0.001}
                       id="PiecePrice"
                       className=" h-5 bg-nftbg w-40 text-black text-center outline-none"
                       placeholder="ETH"
                     />
                   </label>
-                  <h2 className="flex text-white font-lalezar w-[436px] text-center text-xl">
-                    if you want to protect your nft, you can ask for how many
+                  <h2 className="flex text-white font-lalezar w-[280px] text-center justify-start text-xl">
+                    If you want to protect your nft, you can ask for how many
                     hours and how many parts you need to buy for a successful
                     separation, otherwise you will get the nft back, else don't
                     touch this inputs
@@ -74,7 +81,7 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                       value={period}
                       onChange={(e) => setPeriod(e.target.value)}
                       htmlFor="Period"
-                      className="text-xl m-1 p-1 font-lalezar flex flex-col items-center bg-nftbg w-52 text-black rounded-b-lg"
+                      className="text-xl m-1 p-1 font-lalezar flex flex-col items-center bg-nftbg w-52 text-black rounded-md"
                     >
                       Lock period:
                       <input
@@ -87,29 +94,48 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                       value={fractionCount}
                       onChange={(e) => setFractionCount(e.target.value)}
                       htmlFor="Fraction count"
-                      className="text-xl m-1 p-1 font-lalezar flex flex-col items-center bg-nftbg w-2/3 text-black rounded-b-lg"
+                      className="text-xl m-1 p-1 font-lalezar flex flex-col items-center bg-nftbg w-2/3 text-black rounded-md"
                     >
                       Minimum mint quantity:
                       <input
+                        type="number"
+                        min={1}
                         id="Fraction count"
                         className="flex h-5 bg-nftbg w-40 text-black text-center outline-none"
                         placeholder="1-99999"
                       />
                     </label>
                   </div>
-                  <div className="mt-7">
-                    <SplitButton
-                      setLoader={setLoader}
-                      setIsVisible={setIsVisible}
-                      NFTonMarket={NFTonMarket}
-                      fractionCount={fractionCount}
-                      period={period}
-                      piecePrice={piecePrice}
-                      count={count}
-                    />
+                  <div className="mt-4">
+                    {fractionCount >= 1 &&
+                    period &&
+                    piecePrice >= 0.001 &&
+                    count >= 2 ? (
+                      <SplitButton
+                        setLoader={setLoader}
+                        setIsVisible={setIsVisible}
+                        NFTonMarket={NFTonMarket}
+                        fractionCount={fractionCount}
+                        period={period}
+                        piecePrice={piecePrice}
+                        count={count}
+                      />
+                    ) : (
+                      <button onClick={() => alert("Wrong input data")}
+                        className="disabledredbtn"
+                        disabled={
+                          !fractionCount >= 1 ||
+                          !period ||
+                          !piecePrice >= 0.001 ||
+                          !count >= 2
+                        }
+                      >
+                        SPLIT
+                      </button>
+                    )}
                   </div>
                 </div>
-                <div className="w-[480px]  bg-white h-[490px] ml-5 flex items-center justify-center rounded-b-lg">
+                <div className="w-[480px]  bg-white h-[490px] ml-5 flex items-center justify-center rounded-md">
                   <img
                     src={NFTonMarket.media[0].gateway}
                     className="w-[460px] border-b-8 border-slate-400 border 1"

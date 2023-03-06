@@ -4,6 +4,7 @@ import contractAbi from "../../Contract/abi/marketToken/erc20abi.json";
 import split7 from "../../Contract/abi/splitContract/SplitContract";
 
 async function handleJoin(myVaultid, balance, tokenadr) {
+
   const defaultProvider = new InfuraProvider("goerli");
 
   const provider = new BrowserProvider(window.ethereum);
@@ -21,7 +22,7 @@ async function handleJoin(myVaultid, balance, tokenadr) {
     await splitb.join(BigInt(myVaultid));
   } catch (error) {
     console.error(error);
-  }
+  } 
 }
 
 export default handleJoin;
