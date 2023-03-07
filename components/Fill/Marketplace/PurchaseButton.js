@@ -4,15 +4,9 @@ import { BrowserProvider } from "ethers";
 
 import split7 from "../../Contract/abi/splitContract/SplitContract";
 
-function PurchaseButton({
-  price,
-  myVaultid,
-  setActive,
-  active,
-  loader,
-  setLoader,
-}) {
+function PurchaseButton({ price, myVaultid, setActive, active }) {
   const [count, setCount] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const handleSetActive = () => {
     setActive(false);

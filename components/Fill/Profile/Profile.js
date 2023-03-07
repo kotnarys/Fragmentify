@@ -163,7 +163,7 @@ function Profile({
                                 NFT.contract.address &&
                               myVault[i][3] == BigInt(NFT.id.tokenId)
                             ) {
-                              return  (
+                              return (
                                 <div
                                   className="mx-3 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-105 hover: duration-75 flex flex-col items-center m-2"
                                   key={uuid()}
@@ -184,7 +184,7 @@ function Profile({
                                   ) : (
                                     <button
                                       id="joinButton"
-                                      className="greenbtn mt-2"
+                                      className="redbtn mt-2"
                                       onClick={(e) => {
                                         if (e.target.id == "joinButton") {
                                           myVaults(

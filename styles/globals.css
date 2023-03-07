@@ -55,35 +55,33 @@ img {
 }
 
 .disabledredbtn {
-    @apply flex items-center justify-center font-lalezar align-middle bg-rose-800 rounded-lg w-52 h-8 text-xl  text-gray-300 hover:bg-rose-900 hover:shadow-slate-500 leading-normal transition duration-200;
+  @apply flex items-center justify-center font-lalezar align-middle bg-rose-800 rounded-lg w-52 h-8 text-xl  text-gray-300 hover:bg-rose-900 hover:shadow-slate-500 leading-normal transition duration-200;
 }
 
 .enterbtn {
-    @apply flex items-center justify-center font-lalezar align-middle bg-slate-200  w-24 h-8 text-sm text-center rounded-md hover:bg-slate-50 hover:shadow-slate-500 leading-normal outline-none transition duration-200;
+  @apply flex items-center mt-2 justify-center font-lalezar align-middle bg-slate-200  w-24 h-8 text-sm text-center rounded-md hover:bg-slate-50 hover:shadow-slate-500 leading-normal outline-none transition duration-200;
 }
 
 .greenbtn {
-    @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-green-600 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-green-500 hover:shadow-slate-500 leading-normal transition duration-200;
+  @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-green-600 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-green-500 hover:shadow-slate-500 leading-normal transition duration-200;
 }
 
 .mintwalletbtn {
-    @apply flex items-center justify-center font-lalezar align-middle rounded-md  bg-slate-300 border-2 border-fuchsia-200 w-24 h-7 text-sm  text-gray-500 hover:bg-slate-100 hover:shadow-slate-500  transition duration-200;
+  @apply flex items-center justify-center font-lalezar align-middle rounded-md  bg-slate-300 border-2 border-fuchsia-200 w-24 h-7 text-sm  text-gray-500 hover:bg-slate-100 hover:shadow-slate-500  transition duration-200;
 }
 
 .menu {
-    @apply p-2 text-3xl active:translate-y-1 text-gray-600 hover:text-gray-800 font-lalezar disabled:text-black disabled:active:translate-y-0 hover:shadow-slate-500  transition duration-200
+  @apply p-2 text-3xl active:translate-y-1 text-gray-600 hover:text-gray-800 font-lalezar disabled:text-black disabled:active:translate-y-0 hover:shadow-slate-500  transition duration-200;
 }
 
 .orderbtn {
-    @apply mt-2 flex items-center justify-center bg-green-600 font-lalezar rounded-md w-28 h-8 text-xl  text-gray-300 hover:bg-green-500 hover:shadow-slate-500 transition duration-200;
+  @apply mt-2 flex items-center justify-center bg-green-600 font-lalezar rounded-md w-28 h-8 text-xl  text-gray-300 hover:bg-green-500 hover:shadow-slate-500 transition duration-200;
 }
 
 .disabledorderbtn {
-    @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-rose-800 rounded-lg w-28 h-8 text-xl  text-gray-300 hover:bg-rose-900 hover:shadow-slate-500 leading-normal transition duration-200;
+  @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-rose-800 rounded-lg w-28 h-8 text-xl  text-gray-300 hover:bg-rose-900 hover:shadow-slate-500 leading-normal transition duration-200;
 }
 
 .violetbtn {
-    @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-purple-500 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-purple-600 hover:shadow-slate-500 leading-normal transition duration-200;
+  @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-purple-500 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-purple-600 hover:shadow-slate-500 leading-normal transition duration-200;
 }
-
-
