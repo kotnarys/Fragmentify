@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -80,7 +80,7 @@ export default function Home() {
         </div>
       </div>
       <div className=" z-10 bottom-10 h-[54px] flex  text-3xl justify-center items-center text-white font-lalezar bg-slate-700">
-        @kotnarys @cartlex @bubble777 @Serggoal @3TERRNITY
+        @kotnarys @cartlex
       </div>
     </>
   );
