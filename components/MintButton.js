@@ -23,7 +23,7 @@ function MintButton({ address }) {
   return (
     <>
       <button
-        className="mintbtn"
+        className="mintwalletbtn"
         onClick={handleMintClick}
       >
         TEST MINT

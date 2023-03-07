@@ -56,7 +56,7 @@ function SplitButton({
   return (
     <>
       <button
-        className="splitbtn"
+        className="greenbtn"
         onClick={handleSplitClick}
       >
         SPLIT

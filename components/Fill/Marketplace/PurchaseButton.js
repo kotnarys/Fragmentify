@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { BrowserProvider } from 'ethers';
+import { BrowserProvider } from "ethers";
 
-import split7 from '../../Contract/abi/splitContract/SplitContract';
+import split7 from "../../Contract/abi/splitContract/SplitContract";
 
 function PurchaseButton({ price, myVaultid }) {
   const [count, setCount] = useState("");
@@ -13,8 +13,7 @@ function PurchaseButton({ price, myVaultid }) {
     const signer = await provider.getSigner();
     const splitba = split7.connect(signer);
     const totalPrice = price * BigInt(count);
-    const id = myVaultid ;
-    console.log(id, price, count, totalPrice);
+    const id = myVaultid;
     try {
       await splitba.order(id, BigInt(count), { value: totalPrice });
     } catch (error) {
@@ -23,19 +22,16 @@ function PurchaseButton({ price, myVaultid }) {
   }
   return (
     <>
-      <form onSubmit={handleJoinClick} >
-        <div className="flex flex-row space-x-2">
-            <input
-            value={count}
-            placeholder="Enter count"
-            className="enterbtn"
-            onChange={(e) => {
-                setCount(e.target.value);
-            }}
-            />
-            <button className="orderbtn">ORDER</button>
-        </div>
-        
+      <form onSubmit={handleJoinClick}>
+        <input
+          value={count}
+          placeholder="Enter count"
+          className=" rounded-xl w-24 h-8 mr-5 text-center font-lalezar"
+          onChange={(e) => {
+            setCount(e.target.value);
+          }}
+        />
+        <button className="violetbtn">ORDER</button>
       </form>
     </>
   );

@@ -11,6 +11,8 @@ import PurchaseButton from "./PurchaseButton.js";
 function Marketplace({ NFTsOnMarket }) {
   const [myVaultid, setMyVaultId] = useState();
   const [myVault, setMyVault] = useState([]);
+  const [loader, setLoader] = useState(false);
+  const [active, setActive] = useState(true);
 
   async function newVault() {
     const provider = new BrowserProvider(window.ethereum);
