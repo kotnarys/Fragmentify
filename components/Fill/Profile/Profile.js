@@ -81,7 +81,7 @@ function Profile({
                     NFTs.map((NFT) => {
                       return (
                         <div
-                          className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center"
+                          className="transition delay-75 hover:-translate-y-1 hover:scale-105 hover:duration-75 flex flex-col items-center m-2"
                           key={uuid()}
                         >
                           <NftCard
@@ -93,7 +93,7 @@ function Profile({
 
                           <button
                             id="splitbutton"
-                            className="greenbtn mt-2"
+                            className="greenbtn"
                             onClick={(e) => {
                               if (e.target.id == "splitbutton") {
                                 handleSplitClick(NFT);
@@ -122,7 +122,7 @@ function Profile({
                       ) {
                         return (
                           <div
-                            className=" transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center "
+                            className="transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-105 hover: duration-75 flex flex-col items-center m-2"
                             key={uuid()}
                           >
                             <ERC20Card
@@ -165,7 +165,7 @@ function Profile({
                             ) {
                               return  (
                                 <div
-                                  className="mb-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center "
+                                  className="mx-3 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-105 hover: duration-75 flex flex-col items-center m-2"
                                   key={uuid()}
                                 >
                                   <NftCard
