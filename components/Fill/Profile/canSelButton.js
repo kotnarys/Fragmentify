@@ -2,29 +2,22 @@ import React from "react";
 
 import { BrowserProvider } from "ethers";
 
-import NFT8 from "./Contract/abi/nftContract/NftContract.js";
+import marketContract from "../../Contract/abi/market/marketContract";
 
-function MintButton({ address, loader, setLoader }) {
-  async function handleMintClick() {
+function CancelSellButton({ tokenid, tokenadr, loader, setLoader }) {
+  async function handleSellClick() {
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const nft = NFT8.connect(signer);
-
+    const market = marketContract.connect(signer);
     try {
       setLoader(true);
-      const mint = await nft.safeMint(
-        address,
-        process.env.uri
-      );
-      await mint.wait();
+      await market.removeTokenFromShop(tokenid, tokenadr);
     } catch (error) {
       console.error(error);
     } finally {
       setLoader(false);
-      alert("You've just minted a free NFT from Hromofoxes collection");
     }
   }
-
   return (
     <>
       {loader ? (
@@ -36,12 +29,13 @@ function MintButton({ address, loader, setLoader }) {
             Loading...
           </span>
         </div>
-      ) : null}
-      <button className="mintwalletbtn" onClick={handleMintClick}>
-        TEST MINT
-      </button>
+      ) : (
+        <button onClick={handleSellClick} className="m-2 redbtn">
+          CANCEL SELL
+        </button>
+      )}
     </>
   );
 }
 
-export default MintButton;
+export default CancelSellButton;

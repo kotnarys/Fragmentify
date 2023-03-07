@@ -3,9 +3,7 @@ import walletProvider from "../walletProvider";
 
 const getMarketWithSigner = async () => {
     const signer = await walletProvider.getSigner()
-    const martketWithSigner = marketContract.connect(signer);
-
-    return martketWithSigner;
+    return marketContract.connect(signer);
 }
 
 export default getMarketWithSigner;

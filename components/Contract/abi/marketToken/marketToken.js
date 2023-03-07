@@ -1,7 +1,7 @@
 import { Contract } from "ethers";
 import defaultProvider from "../defaultProvider";
 
-const address = "0xAeFF09e2649221E32F5465E2786495bE4eDa580a";
+const address = process.env.marketToken;
 
 const abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },

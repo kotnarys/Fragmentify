@@ -2,6 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import Link from "next/link";
+
 export default function Home() {
   return (
     <>
@@ -57,7 +59,7 @@ export default function Home() {
             src="fullFox.png"
           />
         </div>
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col items-center">
           <div className="flex flex-col border-2 border-slate-400 items-center w-[450px] h-64 bg-violet-200 rounded-2xl ml-96">
             <h1 className="font-lalezar text-purple-500 text-center m-3 text-3xl ">
               FRAGMENTIFY
@@ -80,7 +82,7 @@ export default function Home() {
         </div>
       </div>
       <div className=" z-10 bottom-10 h-[54px] flex  text-3xl justify-center items-center text-white font-lalezar bg-slate-700">
-        @kotnarys @cartlex @bubble777 @Serggoal @3TERRNITY
+        @kotnarys @cartlex
       </div>
     </>
   );

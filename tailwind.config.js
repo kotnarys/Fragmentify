@@ -33,8 +33,35 @@ module.exports = {
       },
       animation: {
         pulsets: "pulset .6s",
+        up: "up 7s infinite",
+        down: "down 7s infinite",
+        left20 :"left20 7s infinite",
+        show : "show 7s infinite"
       },
       keyframes: {
+        up: {
+          "0%": { transform: "translate(0px, 0px) ", opacity:0.3 },
+          "19%": { transform: "translate(0px, 0px) ",opacity:1 },
+          "50%": { transform: "translate(700px,-700px)", opacity: 0.1 },
+          "95%": { transform: "translate(700px, -700px)", opacity: 0.1 },
+        },
+        down: {
+          "0%": { transform: "translate(0px, 0px) ", opacity:0.3 },
+          "19%": { transform: "translate(0px, 0px) " ,opacity:1 },
+          "50%": { transform: "translate(-700px, 700px)", opacity: 0.1 },
+          "95%": { transform: "translate(-700px, 700px)", opacity: 0.1 },     
+        },
+
+        left20: {
+          "0%": {  transform: "translate(0px, -40px)", opacity: 0 },
+          "30%": {  transform: "translate(0px, -40px)", opacity: 0 },
+          "52%": {  transform: "translate(0px, 0px)", opacity: 1 },  
+          "65%": {  transform: "translate(0px, 0px)", opacity: 1 },   
+          "100%": {  transform: "translate(0px, 0px)", opacity: 0 },
+        },
+
+     
+
         pulset: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },

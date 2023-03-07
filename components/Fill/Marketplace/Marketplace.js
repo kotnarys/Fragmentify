@@ -1,23 +1,32 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from "react";
 
-import {
-  BrowserProvider,
-  formatEther,
-} from 'ethers';
-import uuid from 'react-uuid';
+import { BrowserProvider, formatEther } from "ethers";
+import uuid from "react-uuid";
 
-import split7 from '../../Contract/abi/splitContract/SplitContract';
-import NftCard from '../../NFT/NftCard.jsx';
-import handleClaimButtom from './ClaimButton';
-import PurchaseButton from './PurchaseButton.js';
+import split7 from "../../Contract/abi/splitContract/SplitContract";
+import NftCard from "../../NFT/NftCard.jsx";
+import handleClaimButtom from "./ClaimButton";
+import PurchaseButton from "./PurchaseButton.js";
 
-function Marketplace({ address, NFTsOnMarket }) {
+function Marketplace({ NFTsOnMarket }) {
   const [myVaultid, setMyVaultId] = useState();
   const [myVault, setMyVault] = useState([]);
-  const [count, setCount] = useState();
+  const [loader, setLoader] = useState(false);
+  const [active, setActive] = useState(true);
+
+  async function newVault() {
+    const provider = new BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+    const splitb = split7.connect(signer);
+
+    const vaultlength = Number(await splitb.vaultId());
+    const arr = [];
+    for (let i = 0; i < vaultlength; i++) {
+      const vaultik = await splitb.getVault(BigInt(i));
+      arr.push(vaultik);
+    }
+    setMyVault(arr);
+  }
 
   async function myVaults(id, contract) {
     const provider = new BrowserProvider(window.ethereum);
@@ -25,13 +34,11 @@ function Marketplace({ address, NFTsOnMarket }) {
     const splitb = split7.connect(signer);
     {
       const vaultlength = Number(await splitb.vaultId());
-      for (let i = 1; i < vaultlength; i++) {
+      for (let i = 0; i < vaultlength; i++) {
         const vault = await splitb.getVault(BigInt(i));
         if (vault[0].toLowerCase() == contract && vault[3] == BigInt(id)) {
           setMyVaultId(i);
         }
-
-        setMyVault((myVault) => [...myVault, vault]);
       }
     }
   }
@@ -43,8 +50,10 @@ function Marketplace({ address, NFTsOnMarket }) {
   }, [myVaultid]);
 
   useEffect(() => {
-    myVaults();
-  }, [address]);
+    (async () => {
+      await newVault();
+    })();
+  }, []);
 
   return (
     <>
@@ -59,53 +68,60 @@ function Marketplace({ address, NFTsOnMarket }) {
                       myVault[i][0].toLowerCase() == NFT.contract.address &&
                       myVault[i][3] == BigInt(NFT.id.tokenId)
                     ) {
-                      return (
-                        <div
-                          className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover: duration-150 flex flex-col items-center "
-                          key={uuid()}
-                        >
-                          <NftCard
-                            image={NFT.media[0].gateway}
-                            title={NFT.title}
-                            address={NFT.contract.address}
-                            count={
-                              <>
-                                PURCHASED: {Number(myVault[i][4])}/
-                                {Number(myVault[i][5])}
-                              </>
-                            }
-                            price={
-                              <>{`PRICE: ${formatEther(myVault[i][2])} ETH`}</>
-                            }
-                          ></NftCard>
-                          <div className="flex mt-2 ">
-                            <PurchaseButton
-                              price={myVault[i][2]}
-                              myVaultid={i}
-                              count={count}
-                            />
-                          </div>
-
-                          <button
-                            id="claimButton"
-                            className="rounded-full w-56 h-8 text-white font-lalezar hover:opacity-80 active:translate-y-0.5 bg-teal-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-150  m-2"
-                            onClick={(e) => {
-                              if (e.target.id == "claimButton") {
-                                myVaults(NFT.id.tokenId, NFT.contract.address);
-                              }
-                            }}
+                      if (myVault[i][4] != myVault[i][5]) {
+                        return (
+                          <div
+                            className="transition ease-in-out delay-75 hover:scale-105 hover: duration-75 flex flex-col items-center"
+                            key={uuid()}
                           >
-                            CLAIM
-                          </button>
-                        </div>
-                      );
+                            <NftCard
+                              image={NFT.media[0].gateway}
+                              title={NFT.title}
+                              address={NFT.contract.address}
+                              count={
+                                <>
+                                  PURCHASED: {Number(myVault[i][4])}/
+                                  {Number(myVault[i][5])}
+                                </>
+                              }
+                              price={
+                                <>{`PRICE: ${formatEther(
+                                  myVault[i][2]
+                                )} ETH`}</>
+                              }
+                            ></NftCard>
+                            <div className="flex mt-2">
+                              <PurchaseButton
+                                active={active}
+                                setActive={setActive}
+                                price={myVault[i][2]}
+                                myVaultid={i}
+                                loader={loader}
+                                setLoader={setLoader}
+                              />
+                            </div>
+                            <button
+                              id="claimButton"
+                              className="violetbtn"
+                              onClick={(e) => {
+                                if (e.target.id == "claimButton") {
+                                  myVaults(
+                                    NFT.id.tokenId,
+                                    NFT.contract.address
+                                  );
+                                }
+                              }}
+                            >
+                              CLAIM
+                            </button>
+                          </div>
+                        );
+                      }
                     }
                   }
                 })
               ) : (
-                <div className="text-white m-32 3xl font-lalezar flex justify-center">
-                  Connect Wallet!
-                </div>
+                <div> {null} </div>
               )}
             </section>
           </div>

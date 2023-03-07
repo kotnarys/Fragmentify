@@ -2,29 +2,25 @@ import React from "react";
 
 import { BrowserProvider } from "ethers";
 
-import NFT8 from "./Contract/abi/nftContract/NftContract.js";
+import marketContract from "../../Contract/abi/market/marketContract";
 
-function MintButton({ address, loader, setLoader }) {
-  async function handleMintClick() {
+function BuyButton({ totalPrice, tokenid, tokenadr, loader, setLoader }) {
+  async function handleBuyClick() {
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const nft = NFT8.connect(signer);
-
+    const market = marketContract.connect(signer);
     try {
       setLoader(true);
-      const mint = await nft.safeMint(
-        address,
-        process.env.uri
-      );
-      await mint.wait();
+      const buy = await market.buyToken(tokenadr, tokenid, {
+        value: totalPrice,
+      });
+      await buy.wait();
     } catch (error) {
       console.error(error);
     } finally {
       setLoader(false);
-      alert("You've just minted a free NFT from Hromofoxes collection");
     }
   }
-
   return (
     <>
       {loader ? (
@@ -36,12 +32,13 @@ function MintButton({ address, loader, setLoader }) {
             Loading...
           </span>
         </div>
-      ) : null}
-      <button className="mintwalletbtn" onClick={handleMintClick}>
-        TEST MINT
-      </button>
+      ) : (
+        <button onClick={handleBuyClick} className="violetbtn">
+          BUY
+        </button>
+      )}
     </>
   );
 }
 
-export default MintButton;
+export default BuyButton;

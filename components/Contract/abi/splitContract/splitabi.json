@@ -1,4 +1,5 @@
 [
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
   { "inputs": [], "name": "VaultNotFound", "type": "error" },
   {
     "anonymous": false,
@@ -339,16 +340,14 @@
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "name": "vaultToOwner",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "uint256", "name": "_vaultId", "type": "uint256" }
-    ],
+    "inputs": [],
     "name": "withdrawMoney",
     "outputs": [],
     "stateMutability": "nonpayable",

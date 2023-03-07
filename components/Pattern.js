@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
+
 import Link from "next/link";
+
 import Marketplace from "./Fill/Marketplace/Marketplace.js";
 import SplitModal from "./Fill/Profile/ModalSplit";
 import Profile from "./Fill/Profile/Profile";
 import Resale from "./Fill/Resale/Resale.js";
 import MintButton from "./MintButton";
-import { fetchNFTs } from "./NFT/fetchNFTs.js";
+import fetchNFTs from "./NFT/fetchNFTs.js";
 
 export default function Pattern() {
   const [NFTonMarket, setNFTonMarket] = useState([]);
@@ -13,8 +15,9 @@ export default function Pattern() {
   const [address, setAddress] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [NFTs, setNFTs] = useState("");
-  const [contractAddress, setContractAddress] = useState("");
   const [NFTsOnMarket, setNFTsOnMarket] = useState("");
+  const [contractAddress, setContractAddress] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const handleConnectWallet = async () => {
     try {
@@ -24,30 +27,38 @@ export default function Pattern() {
       setAddress(accounts[0]);
       fetchNFTs(accounts[0], contractAddress, setNFTs);
       fetchNFTs(
-        "0xe9B8bc5179B9e95C6fdd91DCEDC1C19ee1Af0Dad",
+        process.env.splitContract,
         contractAddress,
         setNFTsOnMarket
       );
-
-      return address[0];
     } catch (error) {
       console.error(error);
     }
   };
-
+  const connectMarketPlace = async () => {
+    try {
+      fetchNFTs(
+        process.env.splitContract,
+        contractAddress,
+        setNFTsOnMarket
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    handleConnectWallet();
+    connectMarketPlace();
   }, []);
 
   return (
     <>
       <Fragment>
-        <div className="bg-patternbg">
-          <nav className="flex justify-between p-3 place-items-center">
+        <div className="bg-gradient-to-r  from-violet-300 to-fuchsia-300">
+          <nav className="flex justify-between pr-16 place-items-center align-middle">
             <Link href="/Home" className="p-1">
               <img
                 src="/home.png"
-                className="h-12 active:translate-y-1 hover:opacity-80"
+                className="h-12 active:translate-y-1 hover:opacity-80 mt-2 ml-2"
                 alt="HOME"
               />
             </Link>
@@ -55,7 +66,7 @@ export default function Pattern() {
               <button
                 disabled={page === "market" ? 1 : 0}
                 onClick={() => setPage("market")}
-                className="p-2 text-3xl active:translate-y-1 hover:text-gray-400 font-lalezar disabled:text-gray-500 disabled:active:translate-y-0"
+                className="menu"
               >
                 PRIMARY
               </button>
@@ -65,7 +76,7 @@ export default function Pattern() {
                 onClick={() => {
                   setPage("resale");
                 }}
-                className="p-2 text-3xl active:translate-y-1 hover:text-gray-400 font-lalezar disabled:text-gray-500 disabled:active:translate-y-0"
+                className="menu"
               >
                 RESALE
               </button>
@@ -75,30 +86,30 @@ export default function Pattern() {
                 onClick={() => {
                   setPage("profile");
                 }}
-                className="p-2 text-3xl active:translate-y-1 hover:text-gray-400 font-lalezar disabled:text-gray-500 disabled:active:translate-y-0"
+                className="menu"
               >
                 PROFILE
               </button>
             </div>
-            <div className="flex">
-              <MintButton address={address} />
+            <div className="flex items-center space-x-3 ">
+              <MintButton address={address} loader={loader} setLoader={setLoader}/>
               {address ? (
-                <p className="bg-white rounded-full font-lalezar p-1 m-2">{`${address.slice(
+                <p className="mintwalletbtn">{`${address.slice(
                   0,
                   4
                 )}...${address.slice(address.length - 4)}`}</p>
               ) : (
                 <button
-                  className="bg-white rounded-full font-lalezar w-48 h-7"
+                  className="mintwalletbtn"
                   onClick={handleConnectWallet}
                 >
-                  Connect MetaMask
+                  Connect wallet
                 </button>
               )}
             </div>
           </nav>
           <div className=" flex justify-center">
-            <div className="min-h-[865px] bg-grays w-11/12 mb-5 rounded-md">
+            <div className="min-h-[865px] w-11/12 mb-5 rounded-md bg-gradient-to-br from-gray-500 to-gray-600">
               {page === "market" ? (
                 <Marketplace
                   address={address}

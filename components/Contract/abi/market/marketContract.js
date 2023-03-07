@@ -1,8 +1,8 @@
 import { Contract } from "ethers";
+
 import defaultProvider from "../defaultProvider";
 
-const address = "0x31f268cFaC81BA763EC02468Eb729B60FBBBF18D";
-
+const address = process.env.marketContract;
 const abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
