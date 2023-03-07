@@ -5,7 +5,7 @@ import split7 from "../../Contract/abi/splitContract/SplitContract";
 
 async function handleJoin(myVaultid, balance, tokenadr) {
 
-  const defaultProvider = new InfuraProvider("goerli");
+  const defaultProvider = new InfuraProvider(proccess.env.networkName);
 
   const provider = new BrowserProvider(window.ethereum);
   const signer = await provider.getSigner();
@@ -15,7 +15,7 @@ async function handleJoin(myVaultid, balance, tokenadr) {
 
   try {
     const aprove = await erc20token.approve(
-      "0xcf02e7843de8E0d25858b5736494B2af1c679E33",
+      process.env.splitContract,
       BigInt(balance)
     );
     await aprove.wait();

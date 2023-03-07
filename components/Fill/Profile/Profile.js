@@ -228,7 +228,7 @@ function Profile({
                                       image={NFTsOnMarket[y].media[0].gateway}
                                       title={NFTsOnMarket[y].title}
                                       address={
-                                        "0x47ca9D580EC559e725920B0a6F6729E487816232"
+                                        process.env.marketContract
                                       }
                                       amount={erc20[4]}
                                       tokenadr={allVault[x][7]}
