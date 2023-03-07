@@ -73,7 +73,7 @@ function PurchaseButton({
         ) : (
           <button
             onClick={() => alert("Wrong input data")}
-            disabled={!count >= 1}
+            disabled={count < 1}
             className="disabledorderbtn"
           >
             ORDER

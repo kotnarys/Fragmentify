@@ -59,7 +59,7 @@ img {
 }
 
 .enterbtn {
-    @apply flex items-center justify-center font-lalezar align-middle bg-slate-200  w-24 h-8 text-sm text-center rounded-md hover:bg-slate-50 hover:shadow-slate-500 leading-normal outline-none transition duration-200;
+    @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-slate-200  w-24 h-8 text-sm text-center rounded-md hover:bg-slate-50 hover:shadow-slate-500 leading-normal outline-none transition duration-200;
 }
 
 .greenbtn {
@@ -85,5 +85,4 @@ img {
 .violetbtn {
     @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-purple-500 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-purple-600 hover:shadow-slate-500 leading-normal transition duration-200;
 }
-
 

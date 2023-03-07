@@ -121,7 +121,7 @@ function SplitModal({ setIsVisible, isVisible, onClose, NFTonMarket }) {
                         count={count}
                       />
                     ) : (
-                      <button onClick={() => alert("Wrong input data")}
+                      <button
                         className="disabledredbtn"
                         disabled={
                           !fractionCount >= 1 ||

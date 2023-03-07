@@ -17,6 +17,7 @@ export default function Pattern() {
   const [NFTs, setNFTs] = useState("");
   const [NFTsOnMarket, setNFTsOnMarket] = useState("");
   const [contractAddress, setContractAddress] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const handleConnectWallet = async () => {
     try {
@@ -57,7 +58,7 @@ export default function Pattern() {
             <Link href="/Home" className="p-1">
               <img
                 src="/home.png"
-                className="h-12 active:translate-y-1 hover:opacity-80"
+                className="h-12 active:translate-y-1 hover:opacity-80 mt-2 ml-2"
                 alt="HOME"
               />
             </Link>
@@ -91,7 +92,7 @@ export default function Pattern() {
               </button>
             </div>
             <div className="flex items-center space-x-3 ">
-              <MintButton address={address} />
+              <MintButton address={address} loader={loader} setLoader={setLoader}/>
               {address ? (
                 <p className="mintwalletbtn">{`${address.slice(
                   0,

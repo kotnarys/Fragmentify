@@ -71,7 +71,7 @@ function Marketplace({ NFTsOnMarket }) {
                       if (myVault[i][4] != myVault[i][5]) {
                         return (
                           <div
-                            className="transition ease-in-out delay-150 hover:scale-105 hover: duration-150 flex flex-col items-center "
+                            className="transition ease-in-out delay-75 hover:scale-105 hover: duration-75 flex flex-col items-center"
                             key={uuid()}
                           >
                             <NftCard
@@ -90,7 +90,7 @@ function Marketplace({ NFTsOnMarket }) {
                                 )} ETH`}</>
                               }
                             ></NftCard>
-                            <div className="flex mt-2 ">
+                            <div className="flex mt-2">
                               <PurchaseButton
                                 active={active}
                                 setActive={setActive}
@@ -102,7 +102,7 @@ function Marketplace({ NFTsOnMarket }) {
                             </div>
                             <button
                               id="claimButton"
-                              className="violetbtn mt-2"
+                              className="violetbtn"
                               onClick={(e) => {
                                 if (e.target.id == "claimButton") {
                                   myVaults(
