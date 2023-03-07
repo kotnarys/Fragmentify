@@ -1,5 +1,5 @@
 import { InfuraProvider } from "ethers";
 
-const defaultProvider = new InfuraProvider("goerli");
+const defaultProvider = new InfuraProvider(process.env.networkName);
 
 export default defaultProvider;

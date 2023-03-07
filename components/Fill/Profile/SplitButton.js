@@ -19,7 +19,7 @@ function SplitButton({
   const name = NFTonMarket.contractMetadata.name;
   const symbol = NFTonMarket.contractMetadata.symbol;
 
-  const defaultProvider = new InfuraProvider("goerli");
+  const defaultProvider = new InfuraProvider(process.env.networkName);
   const NFT4 = new Contract(adr, contractAbi, defaultProvider);
 
   async function handleSplitClick() {
@@ -31,7 +31,7 @@ function SplitButton({
     try {
       setLoader(true);
       const aprove = await nft.approve(
-        "0xcf02e7843de8E0d25858b5736494B2af1c679E33",
+        process.env.splitContract,
         BigInt(idNFT)
       );
       await aprove.wait();

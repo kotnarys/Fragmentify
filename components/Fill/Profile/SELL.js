@@ -7,7 +7,7 @@ function SellButton({ adr, loader, setLoader, active, setActive }) {
   const [price, setPrice] = useState();
   const [amount, setAmount] = useState();
 
-  const defaultProvider = new InfuraProvider("goerli");
+  const defaultProvider = new InfuraProvider(process.env.networkName);
   const erc20 = new Contract(adr, contractAbi, defaultProvider);
 
   const handleSetActiveClick = () => {
@@ -24,7 +24,7 @@ function SellButton({ adr, loader, setLoader, active, setActive }) {
     try {
       setLoader(true);
       const aprove = await erc20token.approve(
-        "0x47ca9D580EC559e725920B0a6F6729E487816232",
+        process.env.marketContract,
         BigInt(amount)
       );
       await aprove.wait();

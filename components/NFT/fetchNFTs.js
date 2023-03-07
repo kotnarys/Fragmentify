@@ -1,5 +1,5 @@
 // Go to www.alchemy.com and create an account to grab your own api key!
-const apiKey = "sKaPjjjxG03aHv0sJPVMc0HeqYNI6iC2";
+const apiKey = process.env.apiKey;
 const endpoint = `https://polygon-mumbai.g.alchemy.com/v2/${apiKey}`;
 
 const fetchNFTs = async (owner, contractAddress, setNFTs, retryAttempt) => {
