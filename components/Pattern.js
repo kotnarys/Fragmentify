@@ -26,22 +26,14 @@ export default function Pattern() {
       });
       setAddress(accounts[0]);
       fetchNFTs(accounts[0], contractAddress, setNFTs);
-      fetchNFTs(
-        process.env.splitContract,
-        contractAddress,
-        setNFTsOnMarket
-      );
+      fetchNFTs(process.env.splitContract, contractAddress, setNFTsOnMarket);
     } catch (error) {
       console.error(error);
     }
   };
   const connectMarketPlace = async () => {
     try {
-      fetchNFTs(
-        process.env.splitContract,
-        contractAddress,
-        setNFTsOnMarket
-      );
+      fetchNFTs(process.env.splitContract, contractAddress, setNFTsOnMarket);
     } catch (error) {
       console.error(error);
     }
@@ -54,8 +46,8 @@ export default function Pattern() {
     <>
       <Fragment>
         <div className="bg-gradient-to-r  from-violet-300 to-fuchsia-300">
-          <nav className="flex justify-between pr-16 place-items-center align-middle">
-            <Link href="/Home" className="p-1">
+          <nav className="flex p-1 justify-between pr-16 place-items-center align-middle">
+            <Link href="/Index" className="p-1">
               <img
                 src="/home.png"
                 className="h-12 active:translate-y-1 hover:opacity-80 mt-2 ml-2"
@@ -92,24 +84,25 @@ export default function Pattern() {
               </button>
             </div>
             <div className="flex items-center space-x-3 ">
-              <MintButton address={address} loader={loader} setLoader={setLoader}/>
+              <MintButton
+                address={address}
+                loader={loader}
+                setLoader={setLoader}
+              />
               {address ? (
                 <p className="mintwalletbtn">{`${address.slice(
                   0,
                   4
                 )}...${address.slice(address.length - 4)}`}</p>
               ) : (
-                <button
-                  className="mintwalletbtn"
-                  onClick={handleConnectWallet}
-                >
+                <button className="mintwalletbtn" onClick={handleConnectWallet}>
                   Connect wallet
                 </button>
               )}
             </div>
           </nav>
           <div className=" flex justify-center">
-            <div className="min-h-[865px] w-11/12 mb-5 rounded-md bg-gradient-to-br from-gray-500 to-gray-600">
+            <div className="min-h-[872px] w-11/12 mb-5 rounded-md bg-gradient-to-br from-gray-500 to-gray-600">
               {page === "market" ? (
                 <Marketplace
                   address={address}
