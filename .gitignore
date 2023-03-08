@@ -33,3 +33,5 @@ yarn-error.log*
 
 # config
 next.config.js
+
+/package-lock.json
