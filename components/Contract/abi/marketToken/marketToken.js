@@ -1,8 +1,6 @@
 import { Contract } from "ethers";
 import defaultProvider from "../defaultProvider";
 
-const address = process.env.marketToken;
-
 const abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
@@ -143,6 +141,6 @@ const abi = [
   },
 ];
 
-const erc20 = new Contract(address, abi, defaultProvider);
+const erc20 = new Contract(process.env.marketToken, abi, defaultProvider);
 
 export default {erc20, abi};
