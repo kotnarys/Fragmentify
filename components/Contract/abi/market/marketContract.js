@@ -2,7 +2,6 @@ import { Contract } from "ethers";
 
 import defaultProvider from "../defaultProvider";
 
-const address = process.env.marketContract;
 const abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
@@ -162,6 +161,6 @@ const abi = [
   },
 ];
 
-const marketContract = new Contract(address, abi, defaultProvider);
+const marketContract = new Contract(process.env.marketContract, abi, defaultProvider);
 
 export default marketContract;

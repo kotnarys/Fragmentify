@@ -91,7 +91,7 @@ const ERC20Card = ({
                           {count ? (
                             <h2 className="text-xl font-lalezar flex flex-col items-center">
                               {address ==
-                              "0x47ca9D580EC559e725920B0a6F6729E487816232"
+                              process.env.marketContract
                                 ? Number(amount)
                                 : balance}
                               /{count}
@@ -147,7 +147,7 @@ const ERC20Card = ({
                       {count ? (
                         <h2 className="text-xl font-lalezar flex flex-col items-center">
                           {address ==
-                          "0x47ca9D580EC559e725920B0a6F6729E487816232"
+                          process.env.marketContract
                             ? Number(amount)
                             : balance}
                           /{count}
@@ -163,7 +163,7 @@ const ERC20Card = ({
                   </div>
                 </div>
               </div>
-              {address != "0x47ca9D580EC559e725920B0a6F6729E487816232" ? (
+              {address != process.env.marketContract ? (
                 <SellButton
                   adr={tokenadr}
                   loader={loader}

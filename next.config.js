@@ -10,6 +10,6 @@ const nextConfig = {
     uri: "QmS5doNV9CuxMtWS6cWgTuogv97TtXi91t9Exk42V5GaXh ",
     apiKey: "sKaPjjjxG03aHv0sJPVMc0HeqYNI6iC2",
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

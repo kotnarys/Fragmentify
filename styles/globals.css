@@ -83,5 +83,5 @@ img {
 }
 
 .violetbtn {
-  @apply mt-2 flex items-center justify-center font-lalezar align-middle bg-purple-500 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-purple-600 hover:shadow-slate-500 leading-normal transition duration-200;
+  @apply my-3 flex items-center justify-center font-lalezar align-middle bg-purple-500 rounded-md w-52 h-8 text-xl  text-gray-300 hover:bg-purple-600 hover:shadow-slate-500 leading-normal transition duration-200;
 }
