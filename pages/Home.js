@@ -1,6 +1,4 @@
-import React from 'react';
-
-import Link from 'next/link';
+import React from "react";
 
 import Link from "next/link";
 
@@ -75,7 +73,7 @@ export default function Home() {
           </div>
           <Link
             className="rounded-xl font-lalezar w-40 h-10 text-center ml-96 mt-5 flex items-center justify-center hover:bg-blue-500 active:translate-y-1 bg-start-cyan text-white"
-            href={"/Index"}
+            href={"/"}
           >
             LET'S GO!
           </Link>
