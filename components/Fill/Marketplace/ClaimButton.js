@@ -1,6 +1,7 @@
+
 import { BrowserProvider } from 'ethers';
 
-import split6 from '../../Contract/abi/splitContract/SplitContract.js';
+import split7 from '../../Contract/abi/splitContract/SplitContract.js';
 
 async function handleClaimButtom(myVaultid) {
   const provider = new BrowserProvider(window.ethereum);

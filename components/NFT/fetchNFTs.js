@@ -1,12 +1,7 @@
 const apiKey = process.env.apiKey;
 const endpoint = `https://polygon-mumbai.g.alchemy.com/v2/${apiKey}`;
 
-export const fetchNFTs = async (
-  owner,
-  contractAddress,
-  setNFTs,
-  retryAttempt
-) => {
+const fetchNFTs = async (owner, contractAddress, setNFTs, retryAttempt) => {
   if (retryAttempt === 5) {
     return;
   }
@@ -30,3 +25,5 @@ export const fetchNFTs = async (
     return data;
   }
 };
+
+export default fetchNFTs;
