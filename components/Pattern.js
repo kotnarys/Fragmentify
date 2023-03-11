@@ -47,7 +47,7 @@ export default function Pattern() {
       <Fragment>
         <div className="bg-gradient-to-r  from-violet-300 to-fuchsia-300">
           <nav className="flex p-1 justify-between pr-16 place-items-center align-middle">
-            <Link href="/Index" className="p-1">
+            <Link href="/" className="p-1">
               <img
                 src="/home.png"
                 className="h-12 active:translate-y-1 hover:opacity-80 mt-2 ml-2"
