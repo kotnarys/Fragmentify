@@ -84,7 +84,7 @@ export default function Home() {
         </div>
       </div>
       <div className=" z-10 bottom-10 h-[54px] flex  text-3xl justify-center items-center text-white font-lalezar bg-slate-700">
-        GitHub: @kotnarys @cartlex @Bubble777
+      Frontend: @kotnarys Contracts: @cartlex 
       </div>
     </>
   );
