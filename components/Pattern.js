@@ -16,7 +16,7 @@ export default function Pattern() {
   const [showModal, setShowModal] = useState(false);
   const [NFTs, setNFTs] = useState("");
   const [NFTsOnMarket, setNFTsOnMarket] = useState("");
-  const [contractAddress, setContractAddress] = useState("");
+  
   const [loader, setLoader] = useState(false);
 
   const handleConnectWallet = async () => {
@@ -25,15 +25,15 @@ export default function Pattern() {
         method: "eth_requestAccounts",
       });
       setAddress(accounts[0]);
-      fetchNFTs(accounts[0], contractAddress, setNFTs);
-      fetchNFTs(process.env.splitContract, contractAddress, setNFTsOnMarket);
+      fetchNFTs(accounts[0], "", setNFTs);
+      fetchNFTs(process.env.splitContract, "", setNFTsOnMarket);
     } catch (error) {
       console.error(error);
     }
   };
   const connectMarketPlace = async () => {
     try {
-      fetchNFTs(process.env.splitContract, contractAddress, setNFTsOnMarket);
+      fetchNFTs("0xe20C22146e9456feFde9304922a071Cc1d7EFb6B", "", setNFTsOnMarket);
     } catch (error) {
       console.error(error);
     }
